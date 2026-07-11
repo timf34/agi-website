@@ -53,10 +53,9 @@ import { site, hero, about, format, participants } from '../content';
         <div class="scrim" aria-hidden="true"></div>
 
         <div class="container hero-inner">
-          <p class="eyebrow hero-eyebrow reveal">A public exercise in AI preparedness</p>
-          <h1 class="display reveal" style="--reveal-delay:.12s">{hero.headline}</h1>
-          <p class="hero-sub reveal" style="--reveal-delay:.24s">{hero.sub}</p>
-          <p class="reveal" style="--reveal-delay:.36s">
+          <h1 class="display reveal">{hero.headline}</h1>
+          <p class="hero-sub reveal" style="--reveal-delay:.12s">{hero.sub}</p>
+          <p class="reveal" style="--reveal-delay:.24s">
             <a class="btn btn--inverse" href="#initiative">
               Explore the initiative <span class="arrow" aria-hidden="true">↓</span>
             </a>
@@ -98,7 +97,7 @@ import { site, hero, about, format, participants } from '../content';
     <div class="container two-col">
       <p class="eyebrow eyebrow--muted reveal">Around the Table</p>
       <p class="statement participants reveal" style="--reveal-delay:.1s">
-        {participants.join(' · ')}
+        {participants.join(' · ')}
       </p>
     </div>
   </section>
@@ -171,10 +170,6 @@ import { site, hero, about, format, participants } from '../content';
     flex-direction: column;
     gap: 1.8rem;
     padding-block: 130px 80px;
-  }
-
-  .hero-eyebrow {
-    color: rgba(122, 162, 247, 0.9);
   }
 
   .hero .display {
