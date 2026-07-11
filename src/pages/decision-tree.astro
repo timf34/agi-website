@@ -1,0 +1,265 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { site, hero, about, format, participants } from '../content';
+---
+
+<Base title={`${site.name} — Decision Tree`}>
+  <SiteHeader />
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <svg
+        class="tree draw is-hero"
+        viewBox="0 0 900 620"
+        fill="none"
+        aria-hidden="true"
+        preserveAspectRatio="xMaxYMid meet"
+      >
+        <!-- ghost alternatives -->
+        <g class="ghost">
+          <path pathLength="1" d="M180,310 C300,310 340,60 480,60" style="--draw-delay:.9s" />
+          <path pathLength="1" d="M480,450 C580,450 620,580 760,580" style="--draw-delay:1.5s" />
+        </g>
+        <!-- trunk -->
+        <path pathLength="1" d="M-20,310 H180" style="--draw-delay:0s" />
+        <!-- first split -->
+        <path pathLength="1" d="M180,310 C300,310 340,180 480,180" style="--draw-delay:.45s" />
+        <path pathLength="1" d="M180,310 C300,310 340,450 480,450" style="--draw-delay:.45s" />
+        <!-- second split -->
+        <path pathLength="1" d="M480,180 C580,180 620,100 760,100" style="--draw-delay:.95s" />
+        <path pathLength="1" d="M480,180 C580,180 620,255 760,255" style="--draw-delay:.95s" />
+        <path pathLength="1" d="M480,450 C580,450 620,375 760,375" style="--draw-delay:1.05s" />
+        <path pathLength="1" d="M480,450 C580,450 620,520 760,520" style="--draw-delay:1.05s" />
+        <!-- continuations -->
+        <g class="faint">
+          <path pathLength="1" d="M760,100 H920" style="--draw-delay:1.5s" />
+          <path pathLength="1" d="M760,255 H920" style="--draw-delay:1.55s" />
+          <path pathLength="1" d="M760,375 H920" style="--draw-delay:1.6s" />
+          <path pathLength="1" d="M760,520 H920" style="--draw-delay:1.65s" />
+        </g>
+        <!-- nodes -->
+        <g class="nodes">
+          <circle class="fade-node" cx="180" cy="310" r="5" style="--draw-delay:.4s" />
+          <circle class="fade-node" cx="480" cy="180" r="4.5" style="--draw-delay:.95s" />
+          <circle class="fade-node" cx="480" cy="450" r="4.5" style="--draw-delay:1.05s" />
+          <circle class="fade-node end" cx="760" cy="100" r="4" style="--draw-delay:1.5s" />
+          <circle class="fade-node end" cx="760" cy="255" r="4" style="--draw-delay:1.55s" />
+          <circle class="fade-node end accent" cx="760" cy="375" r="4" style="--draw-delay:1.6s" />
+          <circle class="fade-node end" cx="760" cy="520" r="4" style="--draw-delay:1.65s" />
+        </g>
+      </svg>
+
+      <div class="container hero-inner">
+        <h1 class="display reveal">{hero.headline}</h1>
+        <p class="lede reveal" style="--reveal-delay:.15s">{hero.sub}</p>
+        <p class="reveal" style="--reveal-delay:.3s">
+          <a class="btn btn--solid" href="#initiative">
+            Explore the initiative <span class="arrow" aria-hidden="true">↓</span>
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- INITIATIVE -->
+    <section class="section" id="initiative">
+      <div class="container two-col">
+        <p class="eyebrow eyebrow--muted reveal">{about.eyebrow}</p>
+        <div>
+          <h2 class="statement reveal" style="--reveal-delay:.1s">{about.statement}</h2>
+          <p class="body-copy reveal" style="--reveal-delay:.2s">{about.body}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE EXERCISE -->
+    <section class="section hairline-top" id="format">
+      <div class="container two-col">
+        <p class="eyebrow eyebrow--muted reveal">The Exercise</p>
+        <div class="steps">
+          {
+            format.map((step, i) => (
+              <div class="step reveal" style={`--reveal-delay:${0.1 + i * 0.12}s`}>
+                <span class="step-num">0{i + 1}</span>
+                <h3 class="step-title">{step.label}</h3>
+                <p class="body-copy">{step.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTICIPANTS -->
+    <section class="section hairline-top" id="participants">
+      <div class="container two-col">
+        <p class="eyebrow eyebrow--muted reveal">Around the Table</p>
+        <p class="statement participants reveal" style="--reveal-delay:.1s">
+          {participants.join(' · ')}
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section hairline-top" id="contact">
+      <div class="container two-col">
+        <p class="eyebrow eyebrow--muted reveal">Get Involved</p>
+        <ContactCTA />
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</Base>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 92svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(221, 229, 239, 0.25), rgba(251, 251, 248, 0) 40%),
+      var(--paper);
+  }
+
+  .tree {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: min(62vw, 980px);
+    height: 100%;
+    opacity: 0.9;
+  }
+
+  .tree path {
+    stroke: var(--blue);
+    stroke-width: 1.3;
+    opacity: 0.5;
+  }
+
+  /* ghosts: static dashed lines that fade in rather than draw */
+  .tree .ghost path {
+    stroke: var(--slate);
+    stroke-dasharray: 0.012 0.018 !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    transition-delay: var(--draw-delay, 0s);
+  }
+
+  .tree.is-inview .ghost path {
+    opacity: 0.28;
+  }
+
+  .tree .faint path {
+    opacity: 0.25;
+  }
+
+  .tree .nodes circle {
+    fill: var(--paper);
+    stroke: var(--blue);
+    stroke-width: 1.3;
+  }
+
+  .tree .nodes .end {
+    fill: var(--blue);
+    stroke: none;
+  }
+
+  .tree .nodes .accent {
+    fill: var(--cobalt);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tree .ghost path {
+      opacity: 0.28;
+      transition: none;
+    }
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-block: 120px 60px;
+  }
+
+  .hero-inner .display {
+    max-width: 13ch;
+  }
+
+  .hero-inner .lede {
+    max-width: 34rem;
+  }
+
+  /* editorial sections */
+  .two-col {
+    display: grid;
+    grid-template-columns: minmax(140px, 220px) 1fr;
+    gap: clamp(24px, 5vw, 80px);
+    align-items: start;
+  }
+
+  .statement {
+    max-width: 30ch;
+    margin-bottom: 1.4rem;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(24px, 3.5vw, 48px);
+  }
+
+  .step {
+    border-top: 1px solid var(--hairline-strong);
+    padding-top: 1.2rem;
+  }
+
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--cobalt);
+    letter-spacing: 0.12em;
+  }
+
+  .step-title {
+    font-size: 1.35rem;
+    margin: 0.6rem 0 0.5rem;
+  }
+
+  .participants {
+    color: var(--blue);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 760px) {
+    .tree {
+      width: 100vw;
+      opacity: 0.28;
+    }
+
+    .two-col {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 761px) and (max-width: 900px) {
+    .tree {
+      width: 100vw;
+      opacity: 0.28;
+    }
+  }
+</style>

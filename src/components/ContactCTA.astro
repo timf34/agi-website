@@ -1,0 +1,51 @@
+---
+import { site, status } from '../content';
+
+interface Props {
+  inverse?: boolean;
+  align?: 'left' | 'center';
+}
+
+const { inverse = false, align = 'left' } = Astro.props;
+---
+
+<div class:list={['cta-block', `align-${align}`, { inverse }]}>
+  <p class="statement reveal">{status.text}</p>
+  <p class="ask reveal" style="--reveal-delay: 0.1s">{status.ask}</p>
+  <p class="reveal" style="--reveal-delay: 0.2s">
+    <a
+      class:list={['btn', inverse ? 'btn--inverse' : 'btn--solid']}
+      href={`mailto:${site.email}`}
+    >
+      Get involved <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </p>
+</div>
+
+<style>
+  .cta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 46rem;
+  }
+
+  .align-center {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .ask {
+    color: var(--slate);
+    max-width: 34rem;
+  }
+
+  .inverse .statement {
+    color: var(--paper-cool);
+  }
+
+  .inverse .ask {
+    color: rgba(247, 249, 252, 0.65);
+  }
+</style>

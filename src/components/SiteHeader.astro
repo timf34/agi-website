@@ -1,0 +1,88 @@
+---
+import { site } from '../content';
+
+interface Props {
+  inverse?: boolean;
+}
+
+const { inverse = false } = Astro.props;
+---
+
+<header class:list={['site-header', { inverse }]}>
+  <div class="container bar">
+    <a class="wordmark" href="/">{site.name}</a>
+    <nav aria-label="Primary">
+      <a class="nav-link tlink" href="#initiative">Initiative</a>
+      <a class="nav-link tlink" href="#contact">Contact</a>
+      <a class="nav-link cta" href={`mailto:${site.email}`}>Get involved</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding-top: clamp(18px, 2.5vw, 30px);
+  }
+
+  .bar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .wordmark {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  nav {
+    display: flex;
+    align-items: baseline;
+    gap: clamp(18px, 3vw, 36px);
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  .cta {
+    color: var(--cobalt);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+  }
+
+  .inverse .wordmark {
+    color: var(--paper-cool);
+  }
+
+  .inverse .nav-link {
+    color: rgba(247, 249, 252, 0.65);
+  }
+
+  .inverse .cta {
+    color: var(--paper-cool);
+  }
+
+  @media (max-width: 640px) {
+    .nav-link:not(.cta) {
+      display: none;
+    }
+  }
+</style>

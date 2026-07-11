@@ -1,0 +1,150 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../content';
+
+const concepts = [
+  {
+    n: '01',
+    href: '/decision-tree',
+    name: 'Decision Tree',
+    desc: 'A branching-path motif — leaders making decisions under uncertainty. Thin navy lines, circular nodes, a spine that connects sections.',
+  },
+  {
+    n: '02',
+    href: '/accelerating-lines',
+    name: 'Accelerating Lines',
+    desc: 'A dark hero of converging lines — time compressing toward consequential decisions. Editorial white body.',
+  },
+];
+---
+
+<Base title={`${site.name} — Design Concepts`}>
+  <main id="main" class="wrap">
+    <div class="container">
+      <header class="intro">
+        <p class="eyebrow">Internal · Design review</p>
+        <h1 class="display">{site.name}</h1>
+        <p class="sub">
+          Two homepage concepts for comparison. Same copy, same system — two distinct heroes.
+        </p>
+      </header>
+
+      <ul class="concepts">
+        {
+          concepts.map((c) => (
+            <li>
+              <a class="concept" href={c.href}>
+                <span class="num">{c.n}</span>
+                <span class="text">
+                  <span class="name">{c.name}</span>
+                  <span class="desc">{c.desc}</span>
+                </span>
+                <span class="go" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .wrap {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-block: clamp(60px, 8vw, 120px);
+  }
+
+  .intro {
+    max-width: 46rem;
+    margin-bottom: clamp(48px, 6vw, 80px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .intro .display {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  }
+
+  .sub {
+    color: var(--slate);
+    max-width: 34rem;
+  }
+
+  .concepts {
+    list-style: none;
+  }
+
+  .concept {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: baseline;
+    gap: clamp(16px, 3vw, 40px);
+    padding-block: 1.6rem;
+    border-top: 1px solid var(--hairline);
+    text-decoration: none;
+  }
+
+  .concepts li:last-child .concept {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--cobalt);
+    letter-spacing: 0.12em;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    font-weight: 360;
+    line-height: 1.2;
+    transition: color 0.25s ease;
+  }
+
+  .desc {
+    color: var(--slate);
+    font-size: 0.92rem;
+    max-width: 44rem;
+  }
+
+  .go {
+    font-size: 1.1rem;
+    color: var(--pale);
+    transition:
+      color 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .concept:hover .go {
+    color: var(--cobalt);
+    transform: translateX(4px);
+  }
+
+  .concept:hover .name {
+    color: var(--blue);
+  }
+
+  @media (max-width: 640px) {
+    .concept {
+      grid-template-columns: 1fr auto;
+    }
+
+    .num {
+      display: none;
+    }
+  }
+</style>

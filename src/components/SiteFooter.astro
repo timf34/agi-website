@@ -1,0 +1,71 @@
+---
+import { site } from '../content';
+
+interface Props {
+  inverse?: boolean;
+}
+
+const { inverse = false } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class:list={['site-footer', { inverse }]}>
+  <div class="container bar">
+    <span class="mark">{site.name}</span>
+    <a class="mail tlink" href={`mailto:${site.email}`}>{site.email}</a>
+    <span class="legal">© {year} · In development</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--hairline);
+    padding-block: clamp(28px, 4vw, 44px);
+  }
+
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px 32px;
+  }
+
+  .mark {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .mail {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--blue);
+  }
+
+  .legal {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--slate);
+  }
+
+  .inverse {
+    border-top-color: var(--hairline-inverse);
+  }
+
+  .inverse .mark {
+    color: var(--paper-cool);
+  }
+
+  .inverse .mail {
+    color: rgba(247, 249, 252, 0.8);
+  }
+
+  .inverse .legal {
+    color: rgba(247, 249, 252, 0.45);
+  }
+</style>
