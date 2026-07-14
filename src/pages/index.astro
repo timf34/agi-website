@@ -99,13 +99,26 @@ import { site, hero, about, whyNow, format, participants } from '../content';
 <script>
   // Accelerating lines, generated from the hero's real dimensions.
   // Geometry mirrors the original hand-drawn version (1440x800):
-  // evenly spread entry points, flat first half (control points at 48.6%/68%
-  // of width), then a synchronized sweep into a tight convergence band.
+  // evenly spread entry points, a calm first half, then a synchronized sweep
+  // into a tight convergence band. The bend and band both adapt to width so
+  // the acceleration remains legible in portrait instead of flattening out.
   // The band is centred on the headline underline so the fan pours into it.
   const NS = 'http://www.w3.org/2000/svg';
   const hero = document.querySelector('.hero') as HTMLElement;
   const svg = hero?.querySelector('.lines') as SVGSVGElement | null;
   const h1 = hero?.querySelector('.display') as HTMLElement | null;
+
+  function layoutBottom(element: HTMLElement, ancestor: HTMLElement) {
+    let bottom = element.offsetTop + element.offsetHeight;
+    let parent = element.offsetParent as HTMLElement | null;
+
+    while (parent && parent !== ancestor) {
+      bottom += parent.offsetTop;
+      parent = parent.offsetParent as HTMLElement | null;
+    }
+
+    return bottom;
+  }
 
   function buildLines() {
     if (!hero || !svg || !h1) return;
@@ -113,18 +126,23 @@ import { site, hero, about, whyNow, format, participants } from '../content';
     const h = hero.clientHeight;
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
 
-    // the fan (and its horizontal accent line) centres just below the headline
+    // Use layout coordinates so the headline's 24px reveal transform is never
+    // baked into the line position, then leave a small optical underline gap.
     const fs = parseFloat(getComputedStyle(h1).fontSize);
-    const yc = h1.getBoundingClientRect().bottom - hero.getBoundingClientRect().top + fs * 0.32;
+    const underlineGap = Math.min(Math.max(fs * 0.1, 4), 7);
+    const yc = layoutBottom(h1, hero) + underlineGap;
 
-    // convergence tightens as the canvas gets wider; portrait stays gentle
-    const aspect = w / h;
-    const t01 = Math.min(Math.max((aspect - 0.6) / (1.7 - 0.6), 0), 1);
-    const bandRatio = 0.75 + (0.21 - 0.75) * t01;
-    const spread = 0.85 * h;
+    // Narrow canvases need a later, stronger sweep: a broad entry fan still
+    // collapses into a compact band, but the curves stay calm behind the copy.
+    const widthT = Math.min(Math.max((w - 390) / (1200 - 390), 0), 1);
+    const spreadRatio = 0.92 + (0.85 - 0.92) * widthT;
+    const bandRatio = 0.3 + (0.2 - 0.3) * widthT;
+    const c1Ratio = 0.55 + (0.48 - 0.55) * widthT;
+    const c2Ratio = 0.82 + (0.7 - 0.82) * widthT;
+    const spread = spreadRatio * h;
     const band = spread * bandRatio;
-    const c1 = (0.486 * w).toFixed(0);
-    const c2 = (0.68 * w).toFixed(0);
+    const c1 = (c1Ratio * w).toFixed(0);
+    const c2 = (c2Ratio * w).toFixed(0);
 
     svg.innerHTML = '';
     const flow = document.createElementNS(NS, 'g');
@@ -218,7 +236,9 @@ import { site, hero, about, whyNow, format, participants } from '../content';
     }
 
     .scrim {
-      background: linear-gradient(180deg, rgba(11, 27, 51, 0.9) 0%, rgba(11, 27, 51, 0) 18%);
+      background:
+        linear-gradient(90deg, var(--navy) 0%, rgba(11, 27, 51, 0) 32%),
+        linear-gradient(180deg, rgba(11, 27, 51, 0.9) 0%, rgba(11, 27, 51, 0) 18%);
     }
   }
 
@@ -232,8 +252,9 @@ import { site, hero, about, whyNow, format, participants } from '../content';
   }
 
   .lines :global(.flow path.accent) {
-    stroke: rgba(122, 162, 247, 0.8);
-    stroke-width: 1.4;
+    stroke: rgba(122, 162, 247, 0.92);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 0 4px rgba(82, 128, 230, 0.28));
   }
 
   .lines :global(.ticks line) {
