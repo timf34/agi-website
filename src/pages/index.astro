@@ -1,150 +1,345 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site } from '../content';
-
-const concepts = [
-  {
-    n: '01',
-    href: '/decision-tree',
-    name: 'Decision Tree',
-    desc: 'A branching-path motif — leaders making decisions under uncertainty. Thin navy lines, circular nodes, a spine that connects sections.',
-  },
-  {
-    n: '02',
-    href: '/accelerating-lines',
-    name: 'Accelerating Lines',
-    desc: 'A dark hero of converging lines — time compressing toward consequential decisions. Editorial white body.',
-  },
-];
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import AdvisoryCouncil from '../components/AdvisoryCouncil.astro';
+import { site, hero, about, whyNow, format, participants } from '../content';
 ---
 
-<Base title={`${site.name} — Design Concepts`}>
-  <main id="main" class="wrap">
-    <div class="container">
-      <header class="intro">
-        <p class="eyebrow">Internal · Design review</p>
-        <h1 class="display">{site.name}</h1>
-        <p class="sub">
-          Two homepage concepts for comparison. Same copy, same system — two distinct heroes.
-        </p>
-      </header>
+<Base title={`${site.name} — Preparing leaders for an age of advanced AI`}>
+  <div class="dark-hero-wrap">
+    <SiteHeader inverse />
 
-      <ul class="concepts">
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero">
+        <svg
+          class="lines lines--desktop draw"
+          viewBox="0 0 1440 800"
+          preserveAspectRatio="none"
+          fill="none"
+          aria-hidden="true"
+        >
+          <g class="flow">
+            <path pathLength="1" d="M0,60 C700,60 950,142 1440,142" style="--draw-delay:0s" />
+            <path pathLength="1" d="M0,150 C700,150 950,213 1440,213" style="--draw-delay:.05s" />
+            <path pathLength="1" d="M0,240 C700,240 950,283 1440,283" style="--draw-delay:.1s" />
+            <path pathLength="1" d="M0,320 C700,320 950,345 1440,345" style="--draw-delay:.15s" />
+            <path pathLength="1" d="M0,390 C700,390 950,400 1440,400" style="--draw-delay:.2s" />
+            <path pathLength="1" d="M0,460 C700,460 950,454 1440,454" style="--draw-delay:.25s" />
+            <path pathLength="1" d="M0,500 C700,500 950,486 1440,486" style="--draw-delay:.3s" />
+            <path pathLength="1" d="M0,580 C700,580 950,548 1440,548" style="--draw-delay:.35s" />
+            <path pathLength="1" d="M0,660 C700,660 950,610 1440,610" style="--draw-delay:.4s" />
+            <path pathLength="1" d="M0,740 C700,740 950,673 1440,673" style="--draw-delay:.45s" />
+          </g>
+          <g class="ticks">
+            <line pathLength="1" x1="180" y1="772" x2="180" y2="758" style="--draw-delay:.8s" />
+            <line pathLength="1" x1="520" y1="772" x2="520" y2="758" style="--draw-delay:.86s" />
+            <line pathLength="1" x1="731" y1="772" x2="731" y2="758" style="--draw-delay:.92s" />
+            <line pathLength="1" x1="861" y1="772" x2="861" y2="758" style="--draw-delay:.98s" />
+            <line pathLength="1" x1="943" y1="772" x2="943" y2="758" style="--draw-delay:1.04s" />
+            <line pathLength="1" x1="993" y1="772" x2="993" y2="758" style="--draw-delay:1.1s" />
+            <line pathLength="1" x1="1024" y1="772" x2="1024" y2="758" style="--draw-delay:1.16s" />
+            <line pathLength="1" x1="1043" y1="772" x2="1043" y2="758" style="--draw-delay:1.22s" />
+          </g>
+        </svg>
+
+        <!-- mobile: strictly horizontal lines; spacing compresses to convey acceleration.
+             The coloured underline is anchored to the headline itself (see .hero h1::after). -->
+        <svg
+          class="lines lines--mobile draw"
+          viewBox="0 0 390 844"
+          preserveAspectRatio="none"
+          fill="none"
+          aria-hidden="true"
+        >
+          <g class="flow">
+            <path pathLength="1" d="M0,80 C180,80 260,175 390,175" style="--draw-delay:0s" />
+            <path pathLength="1" d="M0,180 C180,180 260,250 390,250" style="--draw-delay:.05s" />
+            <path pathLength="1" d="M0,270 C180,270 260,318 390,318" style="--draw-delay:.1s" />
+            <path pathLength="1" d="M0,350 C180,350 260,378 390,378" style="--draw-delay:.15s" />
+            <path pathLength="1" d="M0,420 C180,420 260,430 390,430" style="--draw-delay:.2s" />
+            <path pathLength="1" d="M0,520 C180,520 260,505 390,505" style="--draw-delay:.25s" />
+            <path pathLength="1" d="M0,600 C180,600 260,565 390,565" style="--draw-delay:.3s" />
+            <path pathLength="1" d="M0,690 C180,690 260,632 390,632" style="--draw-delay:.35s" />
+            <path pathLength="1" d="M0,780 C180,780 260,700 390,700" style="--draw-delay:.4s" />
+          </g>
+          <g class="ticks">
+            <line pathLength="1" x1="40" y1="836" x2="40" y2="822" style="--draw-delay:.8s" />
+            <line pathLength="1" x1="140" y1="836" x2="140" y2="822" style="--draw-delay:.86s" />
+            <line pathLength="1" x1="215" y1="836" x2="215" y2="822" style="--draw-delay:.92s" />
+            <line pathLength="1" x1="268" y1="836" x2="268" y2="822" style="--draw-delay:.98s" />
+            <line pathLength="1" x1="305" y1="836" x2="305" y2="822" style="--draw-delay:1.04s" />
+            <line pathLength="1" x1="330" y1="836" x2="330" y2="822" style="--draw-delay:1.1s" />
+            <line pathLength="1" x1="346" y1="836" x2="346" y2="822" style="--draw-delay:1.16s" />
+            <line pathLength="1" x1="356" y1="836" x2="356" y2="822" style="--draw-delay:1.22s" />
+          </g>
+        </svg>
+        <div class="scrim" aria-hidden="true"></div>
+
+        <div class="container hero-inner">
+          <h1 class="display reveal">{hero.headline}</h1>
+          <p class="hero-sub reveal" style="--reveal-delay:.12s">{hero.sub}</p>
+          <p class="reveal" style="--reveal-delay:.24s">
+            <a class="btn btn--inverse" href="#initiative">
+              Explore the initiative <span class="arrow" aria-hidden="true">↓</span>
+            </a>
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- LIGHT EDITORIAL BODY -->
+  <section class="section" id="initiative">
+    <div class="container two-col">
+      <p class="eyebrow eyebrow--muted reveal">{about.eyebrow}</p>
+      <div>
+        <h2 class="statement reveal" style="--reveal-delay:.1s">{about.statement}</h2>
+        <p class="body-copy reveal" style="--reveal-delay:.2s">{about.body}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hairline-top" id="why-now">
+    <div class="container two-col">
+      <p class="eyebrow eyebrow--muted reveal">{whyNow.eyebrow}</p>
+      <div>
+        <h2 class="statement reveal" style="--reveal-delay:.1s">{whyNow.statement}</h2>
+        <p class="body-copy reveal" style="--reveal-delay:.2s">{whyNow.body}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hairline-top" id="format">
+    <div class="container two-col">
+      <p class="eyebrow eyebrow--muted reveal">The Exercise</p>
+      <div class="steps">
         {
-          concepts.map((c) => (
-            <li>
-              <a class="concept" href={c.href}>
-                <span class="num">{c.n}</span>
-                <span class="text">
-                  <span class="name">{c.name}</span>
-                  <span class="desc">{c.desc}</span>
-                </span>
-                <span class="go" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            </li>
+          format.map((step, i) => (
+            <div class="step reveal" style={`--reveal-delay:${0.1 + i * 0.12}s`}>
+              <span class="step-num">0{i + 1}</span>
+              <h3 class="step-title">{step.label}</h3>
+              <p class="body-copy">{step.text}</p>
+            </div>
           ))
         }
-      </ul>
+      </div>
     </div>
-  </main>
+  </section>
+
+  <section class="section hairline-top" id="participants">
+    <div class="container two-col">
+      <p class="eyebrow eyebrow--muted reveal">Around the Table</p>
+      <p class="statement participants reveal" style="--reveal-delay:.1s">
+        {participants.join(' · ')}
+      </p>
+    </div>
+  </section>
+
+  <section class="section hairline-top" id="advisory-council">
+    <div class="container two-col">
+      <p class="eyebrow eyebrow--muted reveal">Advisory Council</p>
+      <AdvisoryCouncil />
+    </div>
+  </section>
+
+  <!-- CTA on navy, echoing the hero -->
+  <section class="section cta-panel" id="contact">
+    <div class="container">
+      <ContactCTA inverse />
+    </div>
+  </section>
+
+  <SiteFooter />
 </Base>
 
 <style>
-  .wrap {
+  .dark-hero-wrap {
+    background: var(--navy);
+    color: var(--paper-cool);
+  }
+
+  .hero {
+    position: relative;
     min-height: 100svh;
     display: flex;
     align-items: center;
-    padding-block: clamp(60px, 8vw, 120px);
+    overflow: hidden;
   }
 
-  .intro {
-    max-width: 46rem;
-    margin-bottom: clamp(48px, 6vw, 80px);
+  .lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .lines--mobile {
+    display: none;
+  }
+
+  /* the stretched desktop geometry turns diagonal on tall/narrow viewports:
+     switch on orientation, not width, so portrait tablets are covered too */
+  @media (orientation: portrait), (max-width: 760px) {
+    .lines--desktop {
+      display: none;
+    }
+
+    .lines--mobile {
+      display: block;
+    }
+
+    /* lighter feather on mobile so the flow lines stay visible */
+    .scrim {
+      background: linear-gradient(180deg, rgba(11, 27, 51, 0.9) 0%, rgba(11, 27, 51, 0) 18%);
+    }
+  }
+
+  .lines .flow path {
+    stroke: rgba(247, 249, 252, 0.16);
+    stroke-width: 1;
+  }
+
+  .lines .flow path:nth-child(odd) {
+    stroke: rgba(247, 249, 252, 0.09);
+  }
+
+  .lines--mobile .flow path {
+    stroke: rgba(247, 249, 252, 0.24);
+  }
+
+  .lines--mobile .flow path:nth-child(odd) {
+    stroke: rgba(247, 249, 252, 0.14);
+  }
+
+  .lines .ticks line {
+    stroke: rgba(247, 249, 252, 0.35);
+    stroke-width: 1;
+  }
+
+  /* the coloured line: a full-bleed, perfectly horizontal underline anchored
+     to the headline itself, so it tracks the header at every viewport */
+  .hero .display {
+    position: relative;
+  }
+
+  .hero .display::after {
+    content: '';
+    position: absolute;
+    left: calc(50% - 50vw);
+    width: 100vw;
+    bottom: -0.32em;
+    height: 1.5px;
+    background: linear-gradient(
+      90deg,
+      rgba(122, 162, 247, 0),
+      rgba(122, 162, 247, 0.85) 7%,
+      rgba(122, 162, 247, 0.85) 93%,
+      rgba(122, 162, 247, 0)
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.2s var(--ease-draw) 0.5s;
+  }
+
+  .hero .display.is-inview::after {
+    transform: scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero .display::after {
+      transform: scaleX(1);
+      transition: none;
+    }
+  }
+
+  /* feather the left edge so lines emerge from the dark */
+  .scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, var(--navy) 0%, rgba(11, 27, 51, 0) 32%),
+      linear-gradient(180deg, rgba(11, 27, 51, 0.9) 0%, rgba(11, 27, 51, 0) 22%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.8rem;
+    padding-block: 130px 80px;
   }
 
-  .intro .display {
-    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  .hero .display {
+    max-width: 15ch;
+    color: var(--white);
   }
 
-  .sub {
-    color: var(--slate);
+  .hero-sub {
     max-width: 34rem;
+    font-size: 1.05rem;
+    color: rgba(247, 249, 252, 0.72);
   }
 
-  .concepts {
-    list-style: none;
-  }
-
-  .concept {
+  /* editorial body */
+  .two-col {
     display: grid;
-    grid-template-columns: 60px 1fr auto;
-    align-items: baseline;
-    gap: clamp(16px, 3vw, 40px);
-    padding-block: 1.6rem;
-    border-top: 1px solid var(--hairline);
-    text-decoration: none;
+    grid-template-columns: minmax(140px, 220px) 1fr;
+    gap: clamp(24px, 5vw, 80px);
+    align-items: start;
   }
 
-  .concepts li:last-child .concept {
-    border-bottom: 1px solid var(--hairline);
+  .statement {
+    max-width: 30ch;
+    margin-bottom: 1.4rem;
   }
 
-  .num {
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(24px, 3.5vw, 48px);
+  }
+
+  .step {
+    border-top: 1px solid var(--hairline-strong);
+    padding-top: 1.2rem;
+  }
+
+  .step-num {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--cobalt);
     letter-spacing: 0.12em;
   }
 
-  .text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+  .step-title {
+    font-size: 1.35rem;
+    margin: 0.6rem 0 0.5rem;
   }
 
-  .name {
-    font-family: var(--font-serif);
-    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-    font-weight: 360;
-    line-height: 1.2;
-    transition: color 0.25s ease;
-  }
-
-  .desc {
-    color: var(--slate);
-    font-size: 0.92rem;
-    max-width: 44rem;
-  }
-
-  .go {
-    font-size: 1.1rem;
-    color: var(--pale);
-    transition:
-      color 0.25s ease,
-      transform 0.25s ease;
-  }
-
-  .concept:hover .go {
-    color: var(--cobalt);
-    transform: translateX(4px);
-  }
-
-  .concept:hover .name {
+  .participants {
     color: var(--blue);
+    margin-bottom: 0;
   }
 
-  @media (max-width: 640px) {
-    .concept {
-      grid-template-columns: 1fr auto;
+  .cta-panel {
+    background: var(--navy);
+    color: var(--paper-cool);
+  }
+
+  @media (max-width: 760px) {
+    .two-col {
+      grid-template-columns: 1fr;
+      gap: 20px;
     }
 
-    .num {
-      display: none;
+    .steps {
+      grid-template-columns: 1fr;
     }
   }
 </style>
