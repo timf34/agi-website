@@ -113,7 +113,7 @@ import { site, hero, about, whyNow, format, participants } from '../content';
     const h = hero.clientHeight;
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
 
-    // underline position: just below the headline (matches .display::after)
+    // the fan (and its horizontal accent line) centres just below the headline
     const fs = parseFloat(getComputedStyle(h1).fontSize);
     const yc = h1.getBoundingClientRect().bottom - hero.getBoundingClientRect().top + fs * 0.32;
 
@@ -129,7 +129,10 @@ import { site, hero, about, whyNow, format, participants } from '../content';
     svg.innerHTML = '';
     const flow = document.createElementNS(NS, 'g');
     flow.setAttribute('class', 'flow');
-    const N = 12;
+    // odd count: the middle line sits exactly at the underline height —
+    // horizontal, full-width, and part of the fan like the original accent
+    const N = 13;
+    const mid = (N - 1) / 2;
     for (let i = 0; i < N; i++) {
       const t = i / (N - 1);
       const yL = Math.min(Math.max(yc + (t - 0.5) * spread, 0.04 * h), 0.97 * h).toFixed(1);
@@ -138,6 +141,7 @@ import { site, hero, about, whyNow, format, participants } from '../content';
       p.setAttribute('d', `M0,${yL} C${c1},${yL} ${c2},${yR} ${w},${yR}`);
       p.setAttribute('pathLength', '1');
       p.style.setProperty('--draw-delay', `${(i * 0.05).toFixed(2)}s`);
+      if (i === mid) p.setAttribute('class', 'accent');
       flow.appendChild(p);
     }
     svg.appendChild(flow);
@@ -227,46 +231,16 @@ import { site, hero, about, whyNow, format, participants } from '../content';
     stroke: rgba(247, 249, 252, 0.09);
   }
 
+  .lines :global(.flow path.accent) {
+    stroke: rgba(122, 162, 247, 0.8);
+    stroke-width: 1.4;
+  }
+
   .lines :global(.ticks line) {
     stroke: rgba(247, 249, 252, 0.35);
     stroke-width: 1;
   }
 
-  /* the coloured line: a full-bleed, perfectly horizontal underline anchored
-     to the headline itself, so it tracks the header at every viewport */
-  .hero .display {
-    position: relative;
-  }
-
-  .hero .display::after {
-    content: '';
-    position: absolute;
-    left: calc(50% - 50vw);
-    width: 100vw;
-    bottom: -0.32em;
-    height: 1.5px;
-    background: linear-gradient(
-      90deg,
-      rgba(122, 162, 247, 0),
-      rgba(122, 162, 247, 0.85) 7%,
-      rgba(122, 162, 247, 0.85) 93%,
-      rgba(122, 162, 247, 0)
-    );
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 1.2s var(--ease-draw) 0.5s;
-  }
-
-  .hero .display.is-inview::after {
-    transform: scaleX(1);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero .display::after {
-      transform: scaleX(1);
-      transition: none;
-    }
-  }
 
   /* feather the left edge so lines emerge from the dark */
   .scrim {
