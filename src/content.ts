@@ -16,8 +16,15 @@ export const hero = {
 export const about = {
   eyebrow: 'The Initiative',
   statement:
-    'Inspired by Event 201, the exercise convenes senior decision-makers to work through a realistic AI crisis in real time.',
-  body: 'Supported by expert briefings, live developments, and simulated news coverage, the exercise culminates in policy recommendations, strategic insights, and lessons learned.',
+    'A serious, non-partisan forum where leaders engage with realistic AI scenarios and demonstrate institutional preparedness.',
+  body: 'Inspired by Event 201 — the pandemic-preparedness exercise convened by Johns Hopkins University shortly before COVID-19 — the initiative brings senior decision-makers from government, industry, and civil society through a realistic AI crisis in real time.',
+};
+
+export const whyNow = {
+  eyebrow: 'Why Now',
+  statement:
+    'The implications of increasingly capable AI are arriving faster than institutions are preparing for them.',
+  body: 'AI is becoming central to economies, governments, and national security. Yet public debate still centres on infrastructure, while the labour-market, cybersecurity, and international consequences arrive fast. This exercise gives that conversation a serious public outlet.',
 };
 
 export const format = [
@@ -26,12 +33,12 @@ export const format = [
     text: 'Expert briefings ground participants in a realistic near-future scenario.',
   },
   {
-    label: 'Exercise',
-    text: 'Leaders respond in real time as the scenario develops through live injects and simulated news.',
+    label: 'Simulation',
+    text: 'Leaders respond in real time as the crisis develops through live injects and simulated news coverage.',
   },
   {
     label: 'Outcomes',
-    text: 'The exercise concludes with policy recommendations and published lessons learned.',
+    text: 'Policy recommendations, strategic insights, and lessons learned — published openly.',
   },
 ];
 
@@ -50,6 +57,33 @@ export const participants = [
   'Journalists',
   'National security experts',
   'Civil-society leaders',
+];
+
+export const advisors = [
+  {
+    name: 'Xenia Wickett',
+    title: 'Director, Wickett Advisory · Former Dean, Chatham House',
+    photo: '/AdvisoryCouncilPhotos/xenia.png',
+    url: 'https://www.linkedin.com/in/xenia-wickett-2686b0/',
+  },
+  {
+    name: 'Jason Hausenloy',
+    title: 'Policy Lead, Centre for AI Safety',
+    photo: '/AdvisoryCouncilPhotos/jason.jpg',
+    url: 'https://www.linkedin.com/in/jasonhausenloy/',
+  },
+  {
+    name: 'Rafael Karapetian',
+    title: 'Director, The Wilberforce Society',
+    photo: '/AdvisoryCouncilPhotos/raf.jpeg',
+    url: 'https://www.linkedin.com/in/rafael-karapetian/',
+  },
+  {
+    name: 'Adam Wurr',
+    title: 'Centre for Geopolitics, University of Cambridge',
+    photo: '/AdvisoryCouncilPhotos/adam-wurr.png',
+    url: 'https://www.cfg.cam.ac.uk/about/people/adam-wurr/',
+  },
 ];
 
 export const status = {

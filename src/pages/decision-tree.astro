@@ -3,7 +3,8 @@ import Base from '../layouts/Base.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ContactCTA from '../components/ContactCTA.astro';
-import { site, hero, about, format, participants } from '../content';
+import AdvisoryCouncil from '../components/AdvisoryCouncil.astro';
+import { site, hero, about, whyNow, format, participants } from '../content';
 ---
 
 <Base title={`${site.name} — Decision Tree`}>
@@ -75,6 +76,17 @@ import { site, hero, about, format, participants } from '../content';
       </div>
     </section>
 
+    <!-- WHY NOW -->
+    <section class="section hairline-top" id="why-now">
+      <div class="container two-col">
+        <p class="eyebrow eyebrow--muted reveal">{whyNow.eyebrow}</p>
+        <div>
+          <h2 class="statement reveal" style="--reveal-delay:.1s">{whyNow.statement}</h2>
+          <p class="body-copy reveal" style="--reveal-delay:.2s">{whyNow.body}</p>
+        </div>
+      </div>
+    </section>
+
     <!-- THE EXERCISE -->
     <section class="section hairline-top" id="format">
       <div class="container two-col">
@@ -100,6 +112,14 @@ import { site, hero, about, format, participants } from '../content';
         <p class="statement participants reveal" style="--reveal-delay:.1s">
           {participants.join(' · ')}
         </p>
+      </div>
+    </section>
+
+    <!-- ADVISORY COUNCIL -->
+    <section class="section hairline-top" id="advisory-council">
+      <div class="container two-col">
+        <p class="eyebrow eyebrow--muted reveal">Advisory Council</p>
+        <AdvisoryCouncil />
       </div>
     </section>
 
