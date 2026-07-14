@@ -10,7 +10,9 @@ const { inverse = false } = Astro.props;
 
 <header class:list={['site-header', { inverse }]}>
   <div class="container bar">
-    <a class="wordmark" href="/">{site.name}</a>
+    <a class="wordmark" href="/">
+      <img src="/temp-logo-trimmed.png" alt={site.name} width="1242" height="214" />
+    </a>
     <nav aria-label="Primary">
       <a class="nav-link tlink" href="#initiative">Initiative</a>
       <a class="nav-link tlink" href="#contact">Contact</a>
@@ -31,19 +33,19 @@ const { inverse = false } = Astro.props;
 
   .bar {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     gap: 24px;
   }
 
   .wordmark {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--ink);
+    display: block;
+    line-height: 0;
+  }
+
+  .wordmark img {
+    height: 26px;
+    width: auto;
   }
 
   nav {
@@ -68,8 +70,9 @@ const { inverse = false } = Astro.props;
     padding-bottom: 2px;
   }
 
-  .inverse .wordmark {
-    color: var(--paper-cool);
+  /* black source PNG → white on dark heroes */
+  .inverse .wordmark img {
+    filter: brightness(0) invert(1);
   }
 
   .inverse .nav-link {
