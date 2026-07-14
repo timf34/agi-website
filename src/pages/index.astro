@@ -14,68 +14,9 @@ import { site, hero, about, whyNow, format, participants } from '../content';
     <main id="main">
       <!-- HERO -->
       <section class="hero">
-        <svg
-          class="lines lines--desktop draw"
-          viewBox="0 0 1440 800"
-          preserveAspectRatio="none"
-          fill="none"
-          aria-hidden="true"
-        >
-          <g class="flow">
-            <path pathLength="1" d="M0,60 C700,60 950,142 1440,142" style="--draw-delay:0s" />
-            <path pathLength="1" d="M0,150 C700,150 950,213 1440,213" style="--draw-delay:.05s" />
-            <path pathLength="1" d="M0,240 C700,240 950,283 1440,283" style="--draw-delay:.1s" />
-            <path pathLength="1" d="M0,320 C700,320 950,345 1440,345" style="--draw-delay:.15s" />
-            <path pathLength="1" d="M0,390 C700,390 950,400 1440,400" style="--draw-delay:.2s" />
-            <path pathLength="1" d="M0,460 C700,460 950,454 1440,454" style="--draw-delay:.25s" />
-            <path pathLength="1" d="M0,500 C700,500 950,486 1440,486" style="--draw-delay:.3s" />
-            <path pathLength="1" d="M0,580 C700,580 950,548 1440,548" style="--draw-delay:.35s" />
-            <path pathLength="1" d="M0,660 C700,660 950,610 1440,610" style="--draw-delay:.4s" />
-            <path pathLength="1" d="M0,740 C700,740 950,673 1440,673" style="--draw-delay:.45s" />
-          </g>
-          <g class="ticks">
-            <line pathLength="1" x1="180" y1="772" x2="180" y2="758" style="--draw-delay:.8s" />
-            <line pathLength="1" x1="520" y1="772" x2="520" y2="758" style="--draw-delay:.86s" />
-            <line pathLength="1" x1="731" y1="772" x2="731" y2="758" style="--draw-delay:.92s" />
-            <line pathLength="1" x1="861" y1="772" x2="861" y2="758" style="--draw-delay:.98s" />
-            <line pathLength="1" x1="943" y1="772" x2="943" y2="758" style="--draw-delay:1.04s" />
-            <line pathLength="1" x1="993" y1="772" x2="993" y2="758" style="--draw-delay:1.1s" />
-            <line pathLength="1" x1="1024" y1="772" x2="1024" y2="758" style="--draw-delay:1.16s" />
-            <line pathLength="1" x1="1043" y1="772" x2="1043" y2="758" style="--draw-delay:1.22s" />
-          </g>
-        </svg>
-
-        <!-- mobile: strictly horizontal lines; spacing compresses to convey acceleration.
-             The coloured underline is anchored to the headline itself (see .hero h1::after). -->
-        <svg
-          class="lines lines--mobile draw"
-          viewBox="0 0 390 844"
-          preserveAspectRatio="none"
-          fill="none"
-          aria-hidden="true"
-        >
-          <g class="flow">
-            <path pathLength="1" d="M0,80 C180,80 260,175 390,175" style="--draw-delay:0s" />
-            <path pathLength="1" d="M0,180 C180,180 260,250 390,250" style="--draw-delay:.05s" />
-            <path pathLength="1" d="M0,270 C180,270 260,318 390,318" style="--draw-delay:.1s" />
-            <path pathLength="1" d="M0,350 C180,350 260,378 390,378" style="--draw-delay:.15s" />
-            <path pathLength="1" d="M0,420 C180,420 260,430 390,430" style="--draw-delay:.2s" />
-            <path pathLength="1" d="M0,520 C180,520 260,505 390,505" style="--draw-delay:.25s" />
-            <path pathLength="1" d="M0,600 C180,600 260,565 390,565" style="--draw-delay:.3s" />
-            <path pathLength="1" d="M0,690 C180,690 260,632 390,632" style="--draw-delay:.35s" />
-            <path pathLength="1" d="M0,780 C180,780 260,700 390,700" style="--draw-delay:.4s" />
-          </g>
-          <g class="ticks">
-            <line pathLength="1" x1="40" y1="836" x2="40" y2="822" style="--draw-delay:.8s" />
-            <line pathLength="1" x1="140" y1="836" x2="140" y2="822" style="--draw-delay:.86s" />
-            <line pathLength="1" x1="215" y1="836" x2="215" y2="822" style="--draw-delay:.92s" />
-            <line pathLength="1" x1="268" y1="836" x2="268" y2="822" style="--draw-delay:.98s" />
-            <line pathLength="1" x1="305" y1="836" x2="305" y2="822" style="--draw-delay:1.04s" />
-            <line pathLength="1" x1="330" y1="836" x2="330" y2="822" style="--draw-delay:1.1s" />
-            <line pathLength="1" x1="346" y1="836" x2="346" y2="822" style="--draw-delay:1.16s" />
-            <line pathLength="1" x1="356" y1="836" x2="356" y2="822" style="--draw-delay:1.22s" />
-          </g>
-        </svg>
+        <!-- flow lines are generated at runtime from the hero's real dimensions,
+             converging into a band centred on the headline underline -->
+        <svg class="lines" fill="none" aria-hidden="true"></svg>
         <div class="scrim" aria-hidden="true"></div>
 
         <div class="container hero-inner">
@@ -155,6 +96,88 @@ import { site, hero, about, whyNow, format, participants } from '../content';
   <SiteFooter />
 </Base>
 
+<script>
+  // Accelerating lines, generated from the hero's real dimensions.
+  // Geometry mirrors the original hand-drawn version (1440x800):
+  // evenly spread entry points, flat first half (control points at 48.6%/68%
+  // of width), then a synchronized sweep into a tight convergence band.
+  // The band is centred on the headline underline so the fan pours into it.
+  const NS = 'http://www.w3.org/2000/svg';
+  const hero = document.querySelector('.hero') as HTMLElement;
+  const svg = hero?.querySelector('.lines') as SVGSVGElement | null;
+  const h1 = hero?.querySelector('.display') as HTMLElement | null;
+
+  function buildLines() {
+    if (!hero || !svg || !h1) return;
+    const w = hero.clientWidth;
+    const h = hero.clientHeight;
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+    // underline position: just below the headline (matches .display::after)
+    const fs = parseFloat(getComputedStyle(h1).fontSize);
+    const yc = h1.getBoundingClientRect().bottom - hero.getBoundingClientRect().top + fs * 0.32;
+
+    // convergence tightens as the canvas gets wider; portrait stays gentle
+    const aspect = w / h;
+    const t01 = Math.min(Math.max((aspect - 0.6) / (1.7 - 0.6), 0), 1);
+    const bandRatio = 0.75 + (0.21 - 0.75) * t01;
+    const spread = 0.85 * h;
+    const band = spread * bandRatio;
+    const c1 = (0.486 * w).toFixed(0);
+    const c2 = (0.68 * w).toFixed(0);
+
+    svg.innerHTML = '';
+    const flow = document.createElementNS(NS, 'g');
+    flow.setAttribute('class', 'flow');
+    const N = 12;
+    for (let i = 0; i < N; i++) {
+      const t = i / (N - 1);
+      const yL = Math.min(Math.max(yc + (t - 0.5) * spread, 0.04 * h), 0.97 * h).toFixed(1);
+      const yR = (yc + (t - 0.5) * band).toFixed(1);
+      const p = document.createElementNS(NS, 'path');
+      p.setAttribute('d', `M0,${yL} C${c1},${yL} ${c2},${yR} ${w},${yR}`);
+      p.setAttribute('pathLength', '1');
+      p.style.setProperty('--draw-delay', `${(i * 0.05).toFixed(2)}s`);
+      flow.appendChild(p);
+    }
+    svg.appendChild(flow);
+
+    // tick ruler: gaps halve toward the right — time compressing
+    const ticks = document.createElementNS(NS, 'g');
+    ticks.setAttribute('class', 'ticks');
+    let x = 0.125 * w;
+    let gap = 0.236 * w;
+    let k = 0;
+    while (gap > 0.013 * w && x < w) {
+      const l = document.createElementNS(NS, 'line');
+      l.setAttribute('x1', x.toFixed(0));
+      l.setAttribute('x2', x.toFixed(0));
+      l.setAttribute('y1', (h - 28).toFixed(0));
+      l.setAttribute('y2', (h - 42).toFixed(0));
+      l.setAttribute('pathLength', '1');
+      l.style.setProperty('--draw-delay', `${(0.8 + k * 0.06).toFixed(2)}s`);
+      ticks.appendChild(l);
+      x += gap;
+      gap *= 0.62;
+      k++;
+    }
+    svg.appendChild(ticks);
+  }
+
+  if (svg) {
+    buildLines();
+    svg.classList.add('draw');
+    // force initial (hidden) state to paint, then trigger the draw-in
+    requestAnimationFrame(() => requestAnimationFrame(() => svg.classList.add('is-inview')));
+    document.fonts?.ready.then(buildLines);
+    let rt: ReturnType<typeof setTimeout>;
+    addEventListener('resize', () => {
+      clearTimeout(rt);
+      rt = setTimeout(buildLines, 150);
+    });
+  }
+</script>
+
 <style>
   .dark-hero-wrap {
     background: var(--navy);
@@ -180,41 +203,31 @@ import { site, hero, about, whyNow, format, participants } from '../content';
     display: none;
   }
 
-  /* the stretched desktop geometry turns diagonal on tall/narrow viewports:
-     switch on orientation, not width, so portrait tablets are covered too */
+  /* portrait: lines stay visible — brighter strokes, lighter feather */
   @media (orientation: portrait), (max-width: 760px) {
-    .lines--desktop {
-      display: none;
+    .lines :global(.flow path) {
+      stroke: rgba(247, 249, 252, 0.24);
     }
 
-    .lines--mobile {
-      display: block;
+    .lines :global(.flow path:nth-child(odd)) {
+      stroke: rgba(247, 249, 252, 0.14);
     }
 
-    /* lighter feather on mobile so the flow lines stay visible */
     .scrim {
       background: linear-gradient(180deg, rgba(11, 27, 51, 0.9) 0%, rgba(11, 27, 51, 0) 18%);
     }
   }
 
-  .lines .flow path {
+  .lines :global(.flow path) {
     stroke: rgba(247, 249, 252, 0.16);
     stroke-width: 1;
   }
 
-  .lines .flow path:nth-child(odd) {
+  .lines :global(.flow path:nth-child(odd)) {
     stroke: rgba(247, 249, 252, 0.09);
   }
 
-  .lines--mobile .flow path {
-    stroke: rgba(247, 249, 252, 0.24);
-  }
-
-  .lines--mobile .flow path:nth-child(odd) {
-    stroke: rgba(247, 249, 252, 0.14);
-  }
-
-  .lines .ticks line {
+  .lines :global(.ticks line) {
     stroke: rgba(247, 249, 252, 0.35);
     stroke-width: 1;
   }
