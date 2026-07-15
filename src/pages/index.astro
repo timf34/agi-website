@@ -235,11 +235,6 @@ import { site, hero, about, whyNow, format, participants } from '../content';
       stroke: rgba(247, 249, 252, 0.14);
     }
 
-    .scrim {
-      background:
-        linear-gradient(90deg, var(--navy) 0%, rgba(11, 27, 51, 0) 32%),
-        linear-gradient(180deg, rgba(11, 27, 51, 0.9) 0%, rgba(11, 27, 51, 0) 18%);
-    }
   }
 
   .lines :global(.flow path) {
@@ -271,6 +266,16 @@ import { site, hero, about, whyNow, format, participants } from '../content';
       linear-gradient(90deg, var(--navy) 0%, rgba(11, 27, 51, 0) 32%),
       linear-gradient(180deg, rgba(11, 27, 51, 0.9) 0%, rgba(11, 27, 51, 0) 22%);
     pointer-events: none;
+  }
+
+  /* Preserve the desktop fade's visual distance on a narrower canvas. This
+     must follow the base rule so the mobile gradient wins the cascade. */
+  @media (orientation: portrait), (max-width: 760px) {
+    .scrim {
+      background:
+        linear-gradient(90deg, var(--navy) 0%, rgba(11, 27, 51, 0) 58%),
+        linear-gradient(180deg, rgba(11, 27, 51, 0.9) 0%, rgba(11, 27, 51, 0) 18%);
+    }
   }
 
   .hero-inner {
