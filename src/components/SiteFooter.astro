@@ -11,7 +11,9 @@ const year = new Date().getFullYear();
 
 <footer class:list={['site-footer', { inverse }]}>
   <div class="container bar">
-    <span class="mark">{site.name}</span>
+    <a class="mark" href="/">
+      <img src="/logo.png" alt={site.name} width="1648" height="288" />
+    </a>
     <a class="mail tlink" href={`mailto:${site.email}`}>{site.email}</a>
     <span class="legal">© {year} · Supported by <a class="tlink" href="https://bluedot.org/">Bluedot</a></span>
   </div>
@@ -26,18 +28,19 @@ const year = new Date().getFullYear();
   .bar {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     gap: 16px 32px;
   }
 
   .mark {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink);
+    display: block;
+    line-height: 0;
+  }
+
+  .mark img {
+    height: 26px;
+    width: auto;
   }
 
   .mail {
@@ -57,8 +60,9 @@ const year = new Date().getFullYear();
     border-top-color: var(--hairline-inverse);
   }
 
-  .inverse .mark {
-    color: var(--paper-cool);
+  /* black source PNG → white on dark backgrounds */
+  .inverse .mark img {
+    filter: brightness(0) invert(1);
   }
 
   .inverse .mail {

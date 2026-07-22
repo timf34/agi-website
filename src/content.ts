@@ -73,7 +73,7 @@ export const advisors = [
   },
   {
     name: 'Jason Hausenloy',
-    title: 'Policy Lead, Centre for AI Safety',
+    title: 'Policy Lead, Center for AI Safety',
     photo: '/AdvisoryCouncilPhotos/jason.jpg',
     url: 'https://www.linkedin.com/in/jasonhausenloy/',
   },

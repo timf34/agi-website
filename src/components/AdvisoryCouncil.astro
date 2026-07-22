@@ -32,8 +32,8 @@ import { advisors } from '../content';
   .council {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(20px, 2.5vw, 36px);
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(16px, 2vw, 32px);
   }
 
   .advisor {
@@ -78,8 +78,24 @@ import { advisors } from '../content';
 
   @media (max-width: 860px) {
     .council {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px 20px;
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      margin-inline: calc(var(--gutter) * -1);
+      padding-inline: var(--gutter);
+      scroll-padding-inline: var(--gutter);
+      scrollbar-width: none;
+    }
+
+    .council::-webkit-scrollbar {
+      display: none;
+    }
+
+    .council > li {
+      flex: 0 0 min(58vw, 240px);
+      scroll-snap-align: start;
     }
   }
 
