@@ -61,6 +61,11 @@ export const participants = [
 
 export const advisors = [
   {
+    name: 'Eduard Heger',
+    title: '10th Prime Minister of the Slovak Republic',
+    photo: '/AdvisoryCouncilPhotos/eduard_heger.jpg',
+  },
+  {
     name: 'Xenia Wickett',
     title: 'Director, Wickett Advisory · Former Dean, Chatham House',
     photo: '/AdvisoryCouncilPhotos/xenia.png',
@@ -74,7 +79,7 @@ export const advisors = [
   },
   {
     name: 'Rafael Karapetian',
-    title: 'Director, The Wilberforce Society',
+    title: "Director '25 - '26, The Wilberforce Society",
     photo: '/AdvisoryCouncilPhotos/raf.jpeg',
     url: 'https://www.linkedin.com/in/rafael-karapetian/',
   },
