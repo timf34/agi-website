@@ -64,6 +64,7 @@ export const advisors = [
     name: 'Eduard Heger',
     title: '10th Prime Minister of the Slovak Republic',
     photo: '/AdvisoryCouncilPhotos/eduard_heger.jpg',
+    url: 'https://en.wikipedia.org/wiki/Eduard_Heger',
   },
   {
     name: 'Xenia Wickett',
