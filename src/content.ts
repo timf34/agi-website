@@ -16,15 +16,15 @@ export const hero = {
 export const about = {
   eyebrow: 'The Initiative',
   statement:
-    'A serious, non-partisan forum where leaders engage with realistic AI scenarios and demonstrate institutional preparedness.',
-  body: 'Inspired by Event 201 — the pandemic-preparedness exercise convened by Johns Hopkins University shortly before COVID-19 — the initiative brings senior decision-makers from government, industry, and civil society through a realistic AI crisis in real time.',
+    'A non-partisan forum where leaders explore realistic AI crises and identify practical steps to strengthen preparedness.',
+  body: 'Inspired by Event 201 (the pandemic-preparedness exercise convened by Johns Hopkins University shortly before COVID-19), the initiative brings senior decision-makers from government, industry, and civil society through a realistic AI crisis in real time.',
 };
 
 export const whyNow = {
   eyebrow: 'Why Now',
   statement:
     'The implications of increasingly capable AI are arriving faster than institutions are preparing for them.',
-  body: 'AI is becoming central to economies, governments, and national security. Yet public debate still centres on infrastructure, while the labour-market, cybersecurity, and international consequences arrive fast. This exercise gives that conversation a serious public outlet.',
+  body: 'A realistic crisis exercise helps leaders explore gaps in information, responsibility and coordination, and identify preparations they can advance today.',
 };
 
 export const format = [
@@ -34,11 +34,11 @@ export const format = [
   },
   {
     label: 'Simulation',
-    text: 'Leaders respond in real time as the crisis develops through live injects and simulated news coverage.',
+    text: 'Leaders respond in real time as the crisis develops through new developments and simulated news coverage.',
   },
   {
     label: 'Outcomes',
-    text: 'Policy recommendations, strategic insights, and lessons learned — published openly.',
+    text: 'Participants identify practical next steps within their influence. The filmed exercise and recommendations will be published afterwards.',
   },
 ];
 
@@ -54,6 +54,7 @@ export const participants = [
   'Policymakers',
   'Senior civil servants',
   'Business executives',
+  'Academics and technical experts',
   'Journalists',
   'National security experts',
   'Civil-society leaders',
