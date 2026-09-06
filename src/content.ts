@@ -30,15 +30,15 @@ export const whyNow = {
 export const format = [
   {
     label: 'Briefings',
-    text: 'Expert briefings ground participants in a realistic near-future scenario.',
+    text: 'Expert briefings introduce a plausible near-future AI crisis and the decisions participants will face.',
   },
   {
     label: 'Simulation',
-    text: 'Leaders respond in real time as the crisis develops through new developments and simulated news coverage.',
+    text: 'Participants work through an escalating crisis, making decisions as new information and simulated news coverage unfold.',
   },
   {
     label: 'Outcomes',
-    text: 'Participants identify practical next steps within their influence. The filmed exercise and recommendations will be published afterwards.',
+    text: 'Participants identify preparations they can advance today. The filmed exercise and recommendations will be published afterwards.',
   },
 ];
 
