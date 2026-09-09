@@ -32,8 +32,10 @@ import { advisors } from '../content';
   .council {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: clamp(16px, 2vw, 32px);
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.5vw, 40px) clamp(16px, 2vw, 32px);
+    max-width: 760px;
+    margin-inline: auto;
   }
 
   .advisor {
@@ -73,11 +75,13 @@ import { advisors } from '../content';
   .title {
     font-size: 0.82rem;
     line-height: 1.45;
+    text-wrap: balance;
     color: var(--slate);
   }
 
   @media (max-width: 860px) {
     .council {
+      max-width: none;
       display: flex;
       gap: 16px;
       overflow-x: auto;
