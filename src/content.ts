@@ -86,6 +86,12 @@ export const advisors = [
     url: 'https://www.linkedin.com/in/rafael-karapetian/',
   },
   {
+    name: 'Dev Sharma',
+    title: 'Chair, Youth Cost of Living Inquiry',
+    photo: '/AdvisoryCouncilPhotos/dev.png',
+    url: 'https://en.wikipedia.org/wiki/Dev_Sharma',
+  },
+  {
     name: 'Adam Wurr',
     title: 'Centre for Geopolitics, University of Cambridge',
     photo: '/AdvisoryCouncilPhotos/adam-wurr.png',
