@@ -88,7 +88,7 @@ export const advisors = [
   {
     name: 'Dev Sharma',
     title: 'Chair, Youth Cost of Living Inquiry',
-    photo: '/AdvisoryCouncilPhotos/dev.png',
+    photo: '/AdvisoryCouncilPhotos/dev-no10.jpeg',
     url: 'https://en.wikipedia.org/wiki/Dev_Sharma',
   },
   {
