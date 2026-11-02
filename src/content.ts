@@ -140,6 +140,7 @@ export const speakers: {
   domain: string;
   bio: string;
   photo: string;
+  url?: string;
 }[] = [
   {
     "id": "leo-varadkar",
@@ -147,7 +148,8 @@ export const speakers: {
     "title": "Former Taoiseach of Ireland",
     "domain": "Head of Government",
     "bio": "Leo Varadkar served twice as Taoiseach (Prime Minister) and Minister for Defence of Ireland (2017–2020 and 2022–2024), becoming the youngest head of government in the country’s history. Across more than a decade in Cabinet—including portfolios as Tánaiste, Minister for Enterprise, Trade and Employment, and Minister for Health—he steered Ireland through Brexit negotiations, the COVID-19 pandemic, and major European digital and economic transitions. A qualified physician, he now advises international leaders and institutions on democratic governance, geopolitical strategy, and technology policy.",
-    "photo": "/SpeakerPhotos/leo-varadkar.jpg"
+    "photo": "/SpeakerPhotos/leo-varadkar.jpg",
+    "url": "https://en.wikipedia.org/wiki/Leo_Varadkar"
   },
   {
     "id": "armen-sarkissian",
@@ -155,7 +157,8 @@ export const speakers: {
     "title": "Former President and Prime Minister of Armenia",
     "domain": "Head of State & Government",
     "bio": "Armen Sarkissian served as the fourth President of Armenia (2018–2022) and previously as Prime Minister (1996–1997), as well as Armenia’s longest-serving Ambassador to the United Kingdom. Before entering statecraft, he was a professor of theoretical physics and computer modelling at Yerevan State University and a visiting researcher at the University of Cambridge, where he co-created the computer game Wordtris. Through Eurasia House International, he advises heads of state and global institutions on quantum politics, technology, and geopolitical risk.",
-    "photo": "/SpeakerPhotos/armen-sarkissian.jpg"
+    "photo": "/SpeakerPhotos/armen-sarkissian.jpg",
+    "url": "https://en.wikipedia.org/wiki/Armen_Sarkissian"
   },
   {
     "id": "eduard-heger",
@@ -163,7 +166,8 @@ export const speakers: {
     "title": "Former Prime Minister of Slovakia",
     "domain": "Head of Government",
     "bio": "Eduard Heger served as Prime Minister of the Slovak Republic from 2021 to 2023, having previously served as Deputy Prime Minister and Minister of Finance. During his premiership, he guided Slovakia through post-pandemic economic recovery, a historic European energy transition, and frontline NATO and EU diplomatic coordination following the invasion of Ukraine. He remains a prominent voice in European security, fiscal reform, and democratic resilience.",
-    "photo": "/SpeakerPhotos/eduard-heger.jpg"
+    "photo": "/SpeakerPhotos/eduard-heger.jpg",
+    "url": "https://en.wikipedia.org/wiki/Eduard_Heger"
   },
   {
     "id": "matthew-rycroft",
@@ -171,7 +175,8 @@ export const speakers: {
     "title": "Former UK Ambassador to the UN and Permanent Secretary, Home Office",
     "domain": "Diplomacy & National Security",
     "bio": "Sir Matthew Rycroft KCMG CBE is one of the United Kingdom’s most seasoned diplomats and civil servants, having served as Permanent Secretary at the Home Office (2020–2025), the Department for International Development, and the Department for Exiting the European Union. Earlier in his career, he served as the UK Permanent Representative to the United Nations in New York, President of the UN Security Council, and Private Secretary to the Prime Minister for Foreign Affairs. He brings three decades of frontline crisis management across national security, multilateral diplomacy, and institutional resilience.",
-    "photo": "/SpeakerPhotos/matthew-rycroft.jpg"
+    "photo": "/SpeakerPhotos/matthew-rycroft.jpg",
+    "url": "https://en.wikipedia.org/wiki/Matthew_Rycroft"
   },
   {
     "id": "audrey-tang",
@@ -179,7 +184,8 @@ export const speakers: {
     "title": "Taiwan’s Cyber Ambassador and former Digital Minister",
     "domain": "Digital Governance & Cyber",
     "bio": "Audrey Tang is Taiwan’s Ambassador-at-Large for Cyber Affairs and served as the country’s inaugural Minister of Digital Affairs (2022–2024) following six years as Digital Minister without portfolio. Named one of TIME’s 100 Most Influential People in AI and a recipient of the Right Livelihood Award, Tang architected Taiwan’s acclaimed civic-technology ecosystem, pioneering open-source digital democracy and rapid counter-disinformation initiatives. Tang advises democratic governments and international bodies worldwide on pluralistic AI alignment and societal cyber resilience.",
-    "photo": "/SpeakerPhotos/audrey-tang.jpg"
+    "photo": "/SpeakerPhotos/audrey-tang.jpg",
+    "url": "https://en.wikipedia.org/wiki/Audrey_Tang"
   },
   {
     "id": "bronek-masojada",
@@ -187,7 +193,8 @@ export const speakers: {
     "title": "Lord Mayor of the City of London",
     "domain": "Global Financial Centre & Insurance",
     "bio": "Bronek Masojada is the Aldermanic Sheriff and incoming Lord Mayor of the City of London, serving as global ambassador for the United Kingdom’s financial and professional services sector. For over two decades (2000–2021), he served as Chief Executive Officer of Hiscox, transforming the FTSE-listed specialist insurer into a global leader in cyber risk, catastrophe insurance, and systemic crisis underwriting. He has also served as Chair of Placing Platform Limited, Deputy Chair of Lloyd’s of London, and an advisor on national disaster-resilience frameworks.",
-    "photo": "/SpeakerPhotos/bronek-masojada.jpg"
+    "photo": "/SpeakerPhotos/bronek-masojada.jpg",
+    "url": "https://en.wikipedia.org/wiki/Bronek_Masojada"
   },
   {
     "id": "dominic-johnson",
@@ -195,7 +202,8 @@ export const speakers: {
     "title": "Former UK Minister for Investment",
     "domain": "Economic Statecraft",
     "bio": "Lord Dominic Johnson of Lainston CBE is a member of the House of Lords and served as UK Minister of State for Investment in the Department for Business and Trade and the Cabinet Office (2022–2024). In government, he spearheaded global inward investment into British frontier technology, artificial intelligence, life sciences, and clean energy infrastructure. Prior to public office, he co-founded Somerset Capital Management, building it into a leading global emerging-markets investment management firm.",
-    "photo": "/SpeakerPhotos/dominic-johnson.jpg"
+    "photo": "/SpeakerPhotos/dominic-johnson.jpg",
+    "url": "https://en.wikipedia.org/wiki/Dominic_Johnson,_Baron_Johnson_of_Lainston"
   },
   {
     "id": "aslaug-arna",
@@ -203,7 +211,8 @@ export const speakers: {
     "title": "Former Minister of Justice and of Higher Education, Science and Innovation, Iceland",
     "domain": "Science, Law & Innovation",
     "bio": "Áslaug Arna Sigurbjörnsdóttir served as Iceland’s Minister of Higher Education, Science and Innovation (2021–2024) and previously as Minister of Justice (2019–2021), becoming one of the youngest cabinet ministers in Nordic history. Across her ministerial tenure, she modernized Iceland’s judicial and national cybersecurity frameworks while spearheading ambitious national strategies for artificial intelligence adoption, R&D investment, and university reform. She recently served as a Fellow at the Center for Democratic Technology and Governance at Columbia University’s School of International and Public Affairs.",
-    "photo": "/SpeakerPhotos/aslaug-arna.jpg"
+    "photo": "/SpeakerPhotos/aslaug-arna.jpg",
+    "url": "https://en.wikipedia.org/wiki/Áslaug_Arna_Sigurbjörnsdóttir"
   },
   {
     "id": "xenia-wickett",
@@ -211,7 +220,8 @@ export const speakers: {
     "title": "Former Senior White House Official",
     "domain": "Geopolitics & Crisis Preparedness",
     "bio": "Xenia Wickett is a geopolitical strategist and crisis-simulation architect who served as Director for South Asia on the US National Security Council at the White House—where she also helped establish the Office of Homeland Security after 9/11—and at the US Department of State. She subsequently served as Executive Director of the PeaceNexus Foundation in Switzerland and spent seven years at Chatham House as Head of the US and the Americas Programme and founding Dean of the Queen Elizabeth II Academy for Leadership in International Affairs. Educated at Harvard’s Kennedy School and Oxford University, she advises global boards and governments on systemic geopolitical risk.",
-    "photo": "/SpeakerPhotos/xenia-wickett.jpg"
+    "photo": "/SpeakerPhotos/xenia-wickett.jpg",
+    "url": "https://en.wikipedia.org/wiki/Xenia_Wickett"
   },
   {
     "id": "andrew-likierman",
@@ -219,7 +229,8 @@ export const speakers: {
     "title": "Former Dean, London Business School",
     "domain": "Financial & Systemic Risk",
     "bio": "Professor Sir Andrew Likierman is Professor of Management Practice at London Business School, where he previously served as Dean for seven years, and is a former Chair of the Bank of England’s Audit and Risk Committee. Earlier in his career, he served as Managing Director of Financial Management, Reporting and Audit at HM Treasury and Head of the UK Government Accountancy Service, spearheading the modernisation of British public resource accounting. A leading authority on human and institutional judgement in the age of AI, he has served on the boards of the Bank of England, Barclays, Times Newspapers, and the National Audit Office.",
-    "photo": "/SpeakerPhotos/andrew-likierman.jpg"
+    "photo": "/SpeakerPhotos/andrew-likierman.jpg",
+    "url": "https://en.wikipedia.org/wiki/Andrew_Likierman"
   },
   {
     "id": "dex-hunter-torricke",
@@ -267,6 +278,7 @@ export const speakers: {
     "title": "Director of AI Policy, Centre for Long-Term Resilience",
     "domain": "Frontier AI Policy & Resilience",
     "bio": "Hamish Hobbs is Director of AI Policy at the Centre for Long-Term Resilience (CLTR), where he leads policy engagement with the UK Government and international institutions on frontier AI governance and extreme risk mitigation. Before joining CLTR, he played a central role in shaping the UK’s National AI Strategy at the Office for Artificial Intelligence, served on the OECD Secretariat for the Global Partnership on AI in Paris, and advised the Australian Department of the Prime Minister and Cabinet. He holds a Master of Public Policy from the University of Oxford, where he studied as a Ramsay Postgraduate Scholar.",
-    "photo": "/SpeakerPhotos/hamish-hobbs.jpg"
+    "photo": "/SpeakerPhotos/hamish-hobbs.jpg",
+    "url": "https://www.longtermresilience.org/team-member/hamish-hobbs/"
   }
 ];
