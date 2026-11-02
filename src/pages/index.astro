@@ -5,7 +5,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import AdvisoryCouncil from '../components/AdvisoryCouncil.astro';
 import Partners from '../components/Partners.astro';
-import { site, hero, about, whyNow, format, participants } from '../content';
+import { site, hero, about, whyNow, format, participants, team } from '../content';
 ---
 
 <Base title={`${site.name}: Preparing leaders for an age of advanced AI`}>
@@ -87,6 +87,13 @@ import { site, hero, about, whyNow, format, participants } from '../content';
     <div class="container two-col">
       <p class="eyebrow eyebrow--muted reveal">Advisory Council</p>
       <AdvisoryCouncil />
+    </div>
+  </section>
+
+  <section class="section hairline-top" id="team">
+    <div class="container two-col">
+      <p class="eyebrow eyebrow--muted reveal">Team</p>
+      <AdvisoryCouncil people={team} />
     </div>
   </section>
 

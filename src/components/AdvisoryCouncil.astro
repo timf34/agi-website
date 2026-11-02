@@ -1,10 +1,16 @@
 ---
 import { advisors } from '../content';
+
+// Defaults to the advisory council; the team section passes its own list.
+interface Props {
+  people?: { name: string; title: string; photo: string; url?: string }[];
+}
+const { people = advisors } = Astro.props;
 ---
 
 <ul class="council">
   {
-    advisors.map((a, i) => (
+    people.map((a, i) => (
       <li class="reveal" style={`--reveal-delay:${0.08 + i * 0.08}s`}>
         {a.url ? (
           <a class="advisor" href={a.url} target="_blank" rel="noopener noreferrer">

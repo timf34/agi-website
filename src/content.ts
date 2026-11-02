@@ -99,6 +99,27 @@ export const advisors = [
   },
 ];
 
+export const team = [
+  {
+    name: 'Tim Farrelly',
+    title: 'Co-founder',
+    photo: '/TeamPhotos/TimFarrelly.jpeg',
+    url: 'https://timfarrelly.com',
+  },
+  {
+    name: 'Daniel Gerlei',
+    title: 'Co-founder',
+    photo: '/TeamPhotos/DanielGerlei.jpeg',
+    url: 'https://danielgerlei.com',
+  },
+  {
+    name: 'Jay Creagh',
+    title: 'Director & Photographer',
+    photo: '/TeamPhotos/JayCreagh.jpeg',
+    url: 'https://jaycreagh.co.uk/',
+  },
+];
+
 export const status = {
   eyebrow: 'Current Status',
   text: 'We are developing and piloting the format through smaller exercises before convening a flagship public event alongside a major international gathering.',
