@@ -118,6 +118,12 @@ export const team = [
     photo: '/TeamPhotos/JayCreagh.jpeg',
     url: 'https://jaycreagh.co.uk/',
   },
+  {
+    name: 'Cai Finch',
+    title: 'Senior Advisor',
+    photo: '/TeamPhotos/CaiFinch.jpeg',
+    url: 'https://www.caifinch.com/',
+  },
 ];
 
 export const status = {
