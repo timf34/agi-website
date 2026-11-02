@@ -124,6 +124,12 @@ export const team = [
     photo: '/TeamPhotos/CaiFinch.jpeg',
     url: 'https://www.caifinch.com/',
   },
+  {
+    name: 'Dev Sharma',
+    title: 'Senior Advisor',
+    photo: '/TeamPhotos/DevSharma.jpeg',
+    url: 'https://www.devsharma.co.uk/',
+  },
 ];
 
 export const status = {
