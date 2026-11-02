@@ -4,8 +4,10 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import AdvisoryCouncil from '../components/AdvisoryCouncil.astro';
+import NameList from '../components/NameList.astro';
 import Partners from '../components/Partners.astro';
-import { site, hero, about, whyNow, format, participants, team } from '../content';
+import Speakers from '../components/Speakers.astro';
+import { site, hero, about, whyNow, format, participants, advisors, team } from '../content';
 ---
 
 <Base title={`${site.name}: Preparing leaders for an age of advanced AI`}>
@@ -83,10 +85,17 @@ import { site, hero, about, whyNow, format, participants, team } from '../conten
     </div>
   </section>
 
+  <section class="section hairline-top" id="speakers">
+    <div class="container two-col">
+      <p class="eyebrow eyebrow--muted reveal">Speakers</p>
+      <Speakers />
+    </div>
+  </section>
+
   <section class="section hairline-top" id="advisory-council">
     <div class="container two-col">
       <p class="eyebrow eyebrow--muted reveal">Advisory Council</p>
-      <AdvisoryCouncil />
+      <NameList people={advisors} />
     </div>
   </section>
 
