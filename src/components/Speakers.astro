@@ -273,6 +273,35 @@ const linkLabel = (url: string) => (url.includes('wikipedia.org') ? 'Wikipedia' 
     .bio-actions {
       grid-column: 1;
     }
+
+    /* compact bio on phones */
+    .panel {
+      padding-block: 16px 14px;
+    }
+
+    .bio {
+      gap: 6px;
+    }
+
+    .bio-name {
+      font-size: 1.05rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .bio-title {
+      font-size: 0.7rem;
+    }
+
+    .bio-text {
+      font-size: 0.76rem;
+      line-height: 1.55;
+    }
+
+    .bio-actions {
+      margin-top: 4px;
+      gap: 18px;
+      font-size: 0.62rem;
+    }
   }
 
   @media (max-width: 560px) {
