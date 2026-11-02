@@ -114,7 +114,7 @@ export const team = [
   },
   {
     name: 'Jay Creagh',
-    title: 'Director & Photographer',
+    title: 'Creative Director',
     photo: '/TeamPhotos/JayCreagh.jpeg',
     url: 'https://jaycreagh.co.uk/',
   },
