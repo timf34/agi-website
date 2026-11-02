@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------
-   AI Global Initiative — shared design system
+   AI Global Initiative: shared design system
    Blue/white institutional. Serif display (Newsreader) + Inter body +
    IBM Plex Mono for eyebrows/labels.
 ------------------------------------------------------------------- */
@@ -10,9 +10,9 @@
   --paper-cool: #f7f9fc;     /* pale blue-grey */
   --white: #ffffff;
   --ink: #101f33;            /* deep navy, primary text */
-  --navy: #0b1b33;           /* darkest — dark sections */
+  --navy: #0b1b33;           /* darkest, for dark sections */
   --blue: #24487f;           /* rich institutional blue */
-  --slate: #5b7191;          /* muted slate blue — secondary text */
+  --slate: #5b7191;          /* muted slate blue, for secondary text */
   --pale: #dde5ef;           /* very pale blue-grey */
   --cobalt: #2456d6;         /* accent, used sparingly */
 

@@ -1,4 +1,4 @@
-// Shared copy for all concepts — deliberately sparse.
+// Shared copy for all concepts: deliberately sparse.
 
 export const site = {
   name: 'AI Global Initiative',
@@ -147,7 +147,7 @@ export const speakers: {
     "name": "Leo Varadkar",
     "title": "Former Taoiseach of Ireland",
     "domain": "Head of Government",
-    "bio": "Leo Varadkar served twice as Taoiseach (Prime Minister) and Minister for Defence of Ireland (2017–2020 and 2022–2024), becoming the youngest head of government in the country’s history. Across more than a decade in Cabinet—including portfolios as Tánaiste, Minister for Enterprise, Trade and Employment, and Minister for Health—he steered Ireland through Brexit negotiations, the COVID-19 pandemic, and major European digital and economic transitions. A qualified physician, he now advises international leaders and institutions on democratic governance, geopolitical strategy, and technology policy.",
+    "bio": "Leo Varadkar served twice as Taoiseach (Prime Minister) and Minister for Defence of Ireland (2017–2020 and 2022–2024), becoming the youngest head of government in the country’s history. Across more than a decade in Cabinet, including portfolios as Tánaiste, Minister for Enterprise, Trade and Employment, and Minister for Health, he steered Ireland through Brexit negotiations, the COVID-19 pandemic, and major European digital and economic transitions. A qualified physician, he now advises international leaders and institutions on democratic governance, geopolitical strategy, and technology policy.",
     "photo": "/SpeakerPhotos/leo-varadkar.jpg",
     "url": "https://en.wikipedia.org/wiki/Leo_Varadkar"
   },
@@ -219,7 +219,7 @@ export const speakers: {
     "name": "Xenia Wickett",
     "title": "Former Senior White House Official",
     "domain": "Geopolitics & Crisis Preparedness",
-    "bio": "Xenia Wickett is a geopolitical strategist and crisis-simulation architect who served as Director for South Asia on the US National Security Council at the White House—where she also helped establish the Office of Homeland Security after 9/11—and at the US Department of State. She subsequently served as Executive Director of the PeaceNexus Foundation in Switzerland and spent seven years at Chatham House as Head of the US and the Americas Programme and founding Dean of the Queen Elizabeth II Academy for Leadership in International Affairs. Educated at Harvard’s Kennedy School and Oxford University, she advises global boards and governments on systemic geopolitical risk.",
+    "bio": "Xenia Wickett is a geopolitical strategist and crisis-simulation architect who served as Director for South Asia on the US National Security Council at the White House (where she also helped establish the Office of Homeland Security after 9/11) and at the US Department of State. She subsequently served as Executive Director of the PeaceNexus Foundation in Switzerland and spent seven years at Chatham House as Head of the US and the Americas Programme and founding Dean of the Queen Elizabeth II Academy for Leadership in International Affairs. Educated at Harvard’s Kennedy School and Oxford University, she advises global boards and governments on systemic geopolitical risk.",
     "photo": "/SpeakerPhotos/xenia-wickett.jpg",
     "url": "https://en.wikipedia.org/wiki/Xenia_Wickett"
   },
@@ -243,9 +243,9 @@ export const speakers: {
   {
     "id": "shalev-hulio",
     "name": "Shalev Hulio",
-    "title": "Co-founder and CEO of Dream Group",
+    "title": "Co-founder and CEO of Dream",
     "domain": "Cyber Resilience & Sovereign AI",
-    "bio": "Shalev Hulio is the Co-founder and CEO of Dream Group, an artificial intelligence company building sovereign language models and cyber resilience platforms to protect national critical infrastructure and governments against complex digital threats. Under his leadership, Dream Group has rapidly scaled into a premier frontier security technology venture partnering with national cybersecurity authorities and global enterprises. Earlier in his life, he served as a captain in the IDF Combat Engineering Corps, commanding international search-and-rescue operations across disaster zones.",
+    "bio": "Shalev Hulio is the Co-founder and CEO of Dream, an artificial intelligence company building sovereign language models and cyber resilience platforms to protect national critical infrastructure and governments against complex digital threats. Under his leadership, Dream has grown into a company valued at $3 billion, working with national cybersecurity authorities and global enterprises. Earlier in his life, he served as a captain in the IDF Combat Engineering Corps, commanding international search-and-rescue operations across disaster zones.",
     "photo": "/SpeakerPhotos/shalev-hulio.jpg"
   },
   {

@@ -1,32 +1,124 @@
 ---
 import { speakers } from '../content';
+
+const linkLabel = (url: string) => (url.includes('wikipedia.org') ? 'Wikipedia' : 'Profile');
 ---
 
-<ul class="speakers">
+<!-- Clicking a person opens a bio panel under their row (script below moves
+     the panel to the end of whichever row was clicked). -->
+<ul class="speakers" data-speakers>
   {
     speakers.map((s, i) => (
-      <li class="reveal" style={`--reveal-delay:${0.05 + (i % 6) * 0.05}s`}>
-        {s.url ? (
-          <a class="speaker" href={s.url} target="_blank" rel="noopener noreferrer">
-            <span class="portrait">
-              <img src={s.photo} alt={s.name} width="400" height="480" loading="lazy" />
-            </span>
-            <span class="name">{s.name}</span>
-            <span class="title">{s.title}</span>
-          </a>
-        ) : (
-          <div class="speaker">
-            <span class="portrait">
-              <img src={s.photo} alt={s.name} width="400" height="480" loading="lazy" />
-            </span>
-            <span class="name">{s.name}</span>
-            <span class="title">{s.title}</span>
-          </div>
-        )}
+      <li class="card reveal" style={`--reveal-delay:${0.05 + (i % 6) * 0.05}s`}>
+        <button
+          class="speaker"
+          type="button"
+          data-speaker={s.id}
+          aria-expanded="false"
+          aria-controls="speaker-panel"
+        >
+          <span class="portrait">
+            <img src={s.photo} alt="" width="400" height="480" loading="lazy" />
+          </span>
+          <span class="name">{s.name}</span>
+          <span class="title">{s.title}</span>
+        </button>
       </li>
     ))
   }
+
+  <li class="panel" id="speaker-panel" hidden>
+    {
+      speakers.map((s) => (
+        <div class="bio" data-bio={s.id} hidden>
+          <div class="bio-head">
+            <h3 class="bio-name">{s.name}</h3>
+            <p class="bio-title">{s.title}</p>
+          </div>
+          <p class="bio-text">{s.bio}</p>
+          <p class="bio-actions">
+            {s.url && (
+              <a class="bio-link" href={s.url} target="_blank" rel="noopener noreferrer">
+                {linkLabel(s.url)} <span aria-hidden="true">↗</span>
+              </a>
+            )}
+            <button class="bio-close" type="button" data-close>
+              Close
+            </button>
+          </p>
+        </div>
+      ))
+    }
+  </li>
 </ul>
+
+<script>
+  const list = document.querySelector<HTMLUListElement>('[data-speakers]');
+  const panel = list?.querySelector<HTMLLIElement>('#speaker-panel');
+  const cards = [...(list?.querySelectorAll<HTMLLIElement>('.card') ?? [])];
+  let openId: string | null = null;
+
+  // Put the panel after the last card on the same row as the clicked one.
+  function placePanel(button: HTMLButtonElement) {
+    if (!list || !panel) return;
+    panel.hidden = true;
+    const card = button.closest('.card') as HTMLLIElement;
+    const rowTop = card.offsetTop;
+    const rowEnd = cards.filter((c) => c.offsetTop === rowTop).pop() ?? card;
+    rowEnd.after(panel);
+    panel.hidden = false;
+  }
+
+  function close() {
+    if (!panel) return;
+    panel.hidden = true;
+    list?.classList.remove('has-open');
+    list?.querySelectorAll('[data-speaker]').forEach((b) => b.setAttribute('aria-expanded', 'false'));
+    const last = openId;
+    openId = null;
+    if (last) list?.querySelector<HTMLButtonElement>(`[data-speaker="${last}"]`)?.focus();
+  }
+
+  function open(button: HTMLButtonElement) {
+    if (!panel) return;
+    const id = button.dataset.speaker!;
+    openId = id;
+    panel.querySelectorAll<HTMLElement>('[data-bio]').forEach((b) => (b.hidden = b.dataset.bio !== id));
+    list?.querySelectorAll('[data-speaker]').forEach((b) => b.setAttribute('aria-expanded', String(b === button)));
+    list?.classList.add('has-open');
+    placePanel(button);
+
+    // keep the bio in view without jumping the page around
+    const rect = panel.getBoundingClientRect();
+    if (rect.bottom > window.innerHeight) {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      panel.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+    }
+  }
+
+  list?.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('[data-close]')) return close();
+    const button = target.closest<HTMLButtonElement>('[data-speaker]');
+    if (!button) return;
+    if (button.dataset.speaker === openId) close();
+    else open(button);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && openId) close();
+  });
+
+  // column count changes with width, so re-place an open panel on resize
+  let t: number | undefined;
+  window.addEventListener('resize', () => {
+    clearTimeout(t);
+    t = window.setTimeout(() => {
+      const b = openId && list?.querySelector<HTMLButtonElement>(`[data-speaker="${openId}"]`);
+      if (b) placePanel(b);
+    }, 120);
+  });
+</script>
 
 <style>
   .speakers {
@@ -40,11 +132,19 @@ import { speakers } from '../content';
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    text-decoration: none;
+    width: 100%;
+    text-align: left;
+    color: inherit;
   }
 
-  a.speaker:hover .name {
+  .speaker:hover .name,
+  .speaker[aria-expanded='true'] .name {
     color: var(--blue);
+  }
+
+  .speaker:focus-visible {
+    outline: 2px solid var(--cobalt);
+    outline-offset: 4px;
   }
 
   .portrait {
@@ -61,6 +161,12 @@ import { speakers } from '../content';
     object-fit: cover;
     object-position: 50% 25%;
     filter: grayscale(1);
+    transition: opacity 0.3s ease;
+  }
+
+  /* while a bio is open, quietly fade the other portraits */
+  .has-open .speaker[aria-expanded='false'] img {
+    opacity: 0.45;
   }
 
   .name {
@@ -77,9 +183,95 @@ import { speakers } from '../content';
     color: var(--slate);
   }
 
+  /* ---------- bio panel ---------- */
+  .panel {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--hairline-strong);
+    border-bottom: 1px solid var(--hairline);
+    padding-block: 24px 22px;
+    animation: panel-in 0.3s var(--ease-entrance);
+  }
+
+  @keyframes panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+
+  .bio {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 2.2fr;
+    gap: 8px clamp(20px, 3vw, 40px);
+  }
+
+  .bio[hidden] {
+    display: none;
+  }
+
+  .bio-name {
+    font-size: 1.35rem;
+    font-weight: 380;
+    margin-bottom: 0.35rem;
+  }
+
+  .bio-title {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--slate);
+  }
+
+  .bio-text {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--ink);
+    max-width: 44rem;
+  }
+
+  .bio-actions {
+    grid-column: 2;
+    display: flex;
+    gap: 24px;
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .bio-link {
+    color: var(--cobalt);
+    text-decoration: none;
+  }
+
+  .bio-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .bio-close {
+    color: var(--slate);
+    letter-spacing: inherit;
+    text-transform: inherit;
+  }
+
+  .bio-close:hover {
+    color: var(--ink);
+  }
+
   @media (max-width: 1100px) {
     .speakers {
       grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .bio {
+      grid-template-columns: 1fr;
+    }
+
+    .bio-actions {
+      grid-column: 1;
     }
   }
 
@@ -95,6 +287,12 @@ import { speakers } from '../content';
 
     .title {
       font-size: 0.66rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .panel {
+      animation: none;
     }
   }
 </style>
