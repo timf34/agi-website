@@ -99,7 +99,7 @@ export const advisors = [
   {
     name: 'Alex Krasodomski',
     title: 'Director, Digital Society Programme, Chatham House',
-    url: 'https://www.linkedin.com/in/alex-kj/',
+    url: 'https://www.chathamhouse.org/about-us/our-people/alex-krasodomski',
   },
 ];
 
