@@ -123,6 +123,11 @@ export const team = [
     url: 'https://jaycreagh.co.uk/',
   },
   {
+    name: 'Nikola Moore',
+    title: 'Scenario Development',
+    photo: '/TeamPhotos/NikolaMoore.jpeg',
+  },
+  {
     name: 'Cai Finch',
     title: 'Senior Advisor',
     photo: '/TeamPhotos/CaiFinch.jpeg',
