@@ -91,6 +91,10 @@ export const advisors = [
     photo: '/AdvisoryCouncilPhotos/adam-wurr.png',
     url: 'https://www.cfg.cam.ac.uk/about/people/adam-wurr/',
   },
+  {
+    name: 'Joshua Landes',
+    title: 'Head of Special Projects, BlueDot Impact',
+  },
 ];
 
 export const team = [
