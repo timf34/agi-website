@@ -94,6 +94,7 @@ export const advisors = [
   {
     name: 'Joshua Landes',
     title: 'Head of Special Projects, BlueDot Impact',
+    url: 'https://joshlandes.com/',
   },
   {
     name: 'Alex Krasodomski',
