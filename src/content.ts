@@ -95,6 +95,10 @@ export const advisors = [
     name: 'Joshua Landes',
     title: 'Head of Special Projects, BlueDot Impact',
   },
+  {
+    name: 'Alex Krasodomski',
+    title: 'Director, Digital Society Programme, Chatham House',
+  },
 ];
 
 export const team = [
