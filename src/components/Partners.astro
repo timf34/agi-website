@@ -25,9 +25,10 @@
 
   .partners-layout {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto auto;
+    justify-content: start;
     align-items: center;
-    gap: clamp(32px, 4vw, 64px);
+    gap: clamp(48px, 7vw, 112px);
   }
 
   h2 {
@@ -38,7 +39,6 @@
 
   .partner-logos {
     display: flex;
-    justify-content: flex-end;
   }
 
   .partner {
@@ -90,6 +90,7 @@
   @media (max-width: 900px) {
     .partners-layout {
       grid-template-columns: 1fr;
+      gap: clamp(32px, 4vw, 64px);
     }
 
     .partners-intro {
