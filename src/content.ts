@@ -69,7 +69,7 @@ export const advisors = [
   },
   {
     name: 'Xenia Wickett',
-    title: 'Director, Wickett Advisory · Former Dean, Chatham House',
+    title: 'Director, Wickett Advisory',
     photo: '/AdvisoryCouncilPhotos/xenia.png',
     url: 'https://www.linkedin.com/in/xenia-wickett-2686b0/',
   },
@@ -98,8 +98,7 @@ export const advisors = [
   },
   {
     name: 'Alex Krasodomski',
-    title: 'Director, Digital Society Programme, Chatham House',
-    url: 'https://www.chathamhouse.org/about-us/our-people/alex-krasodomski',
+    title: 'Director, Digital Society Programme',
   },
 ];
 
@@ -147,7 +146,7 @@ export const status = {
   ask: 'We are seeking advisors, institutional partners, funders, and collaborators.',
 };
 
-// Confirmed speakers for 25 November, most senior first (bios still to be checked).
+// Confirmed speakers, most senior first (bios still to be checked).
 export const speakers: {
   id: string;
   name: string;
@@ -234,7 +233,7 @@ export const speakers: {
     "name": "Xenia Wickett",
     "title": "Former Senior White House Official",
     "domain": "Geopolitics & Crisis Preparedness",
-    "bio": "Xenia Wickett is a geopolitical strategist and crisis-simulation architect who served as Director for South Asia on the US National Security Council at the White House (where she also helped establish the Office of Homeland Security after 9/11) and at the US Department of State. She subsequently served as Executive Director of the PeaceNexus Foundation in Switzerland and spent seven years at Chatham House as Head of the US and the Americas Programme and founding Dean of the Queen Elizabeth II Academy for Leadership in International Affairs. Educated at Harvard’s Kennedy School and Oxford University, she advises global boards and governments on systemic geopolitical risk.",
+    "bio": "Xenia Wickett is a geopolitical strategist and crisis-simulation architect who served as Director for South Asia on the US National Security Council at the White House (where she also helped establish the Office of Homeland Security after 9/11) and at the US Department of State. She subsequently served as Executive Director of the PeaceNexus Foundation in Switzerland and spent seven years at a leading international affairs institute as Head of the US and the Americas Programme and founding Dean of the Queen Elizabeth II Academy for Leadership in International Affairs. Educated at Harvard’s Kennedy School and Oxford University, she advises global boards and governments on systemic geopolitical risk.",
     "photo": "/SpeakerPhotos/xenia-wickett.jpg",
     "url": "https://en.wikipedia.org/wiki/Xenia_Wickett"
   },
