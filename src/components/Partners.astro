@@ -1,15 +1,15 @@
 <section class="partners hairline-top" id="partners" aria-labelledby="partners-heading">
   <div class="container partners-layout">
     <div class="partners-intro">
-      <p class="eyebrow eyebrow--muted">Our partners</p>
+      <p class="eyebrow eyebrow--muted">Our partner</p>
       <h2 id="partners-heading">Working together<br />on AI preparedness.</h2>
     </div>
     <div class="partner-logos">
-      <a class="partner" href="https://bluedot.org/" aria-label="Visit Blue Dot">
+      <a class="partner" href="https://bluedot.org/" aria-label="Visit BlueDot Impact">
         <div class="logo-space">
-          <img class="blue-dot" src="/partners/blue-dot.svg" alt="Blue Dot" width="1003" height="133" />
+          <img class="blue-dot" src="/partners/blue-dot.svg" alt="BlueDot Impact" width="1003" height="133" />
         </div>
-        <span class="partner-link">Blue Dot <span aria-hidden="true">↗</span></span>
+        <span class="partner-link">bluedot.org <span aria-hidden="true">↗</span></span>
       </a>
     </div>
   </div>
@@ -25,7 +25,7 @@
 
   .partners-layout {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr auto;
     align-items: center;
     gap: clamp(32px, 4vw, 64px);
   }
@@ -37,8 +37,8 @@
   }
 
   .partner-logos {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    display: flex;
+    justify-content: flex-end;
   }
 
   .partner {
@@ -46,12 +46,8 @@
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    padding: 12px clamp(20px, 2.5vw, 36px);
+    padding: 12px 0;
     text-decoration: none;
-  }
-
-  .partner + .partner {
-    border-left: 1px solid var(--hairline);
   }
 
   .logo-space {
@@ -99,17 +95,30 @@
     .partners-intro {
       text-align: left;
     }
+
+    .partner-logos {
+      justify-content: flex-start;
+    }
+
+    .partner {
+      align-items: flex-start;
+      padding-inline: 0;
+    }
   }
 
   @media (max-width: 540px) {
     .partner {
       min-width: 0;
-      padding: 8px 12px;
+      padding: 8px 0;
       gap: 12px;
     }
 
     .logo-space {
       height: 56px;
+    }
+
+    .blue-dot {
+      width: 220px;
     }
 
     .partner-link {
