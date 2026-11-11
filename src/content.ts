@@ -166,15 +166,6 @@ export const speakers: {
     "url": "https://en.wikipedia.org/wiki/Leo_Varadkar"
   },
   {
-    "id": "armen-sarkissian",
-    "name": "Armen Sarkissian",
-    "title": "Former President and Prime Minister of Armenia",
-    "domain": "Head of State & Government",
-    "bio": "Armen Sarkissian served as the fourth President of Armenia (2018–2022) and previously as Prime Minister (1996–1997), as well as Armenia’s longest-serving Ambassador to the United Kingdom. Before entering statecraft, he was a professor of theoretical physics and computer modelling at Yerevan State University and a visiting researcher at the University of Cambridge, where he co-created the computer game Wordtris. Through Eurasia House International, he advises heads of state and global institutions on quantum politics, technology, and geopolitical risk.",
-    "photo": "/SpeakerPhotos/armen-sarkissian.jpg",
-    "url": "https://en.wikipedia.org/wiki/Armen_Sarkissian"
-  },
-  {
     "id": "eduard-heger",
     "name": "Eduard Heger",
     "title": "Former Prime Minister of Slovakia",
