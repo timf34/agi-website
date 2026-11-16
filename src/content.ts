@@ -10,14 +10,15 @@ export const hero = {
   alt: 'A public exercise in AI preparedness.',
   question:
     'How will institutions respond when AI capabilities move faster than expected?',
-  sub: 'A public simulation bringing together leaders from government, industry, and civil society to navigate realistic AI crises and strengthen institutional preparedness.',
+  sub: 'AI Global Initiative brings influential leaders together to rehearse realistic AI crises. Our first exercise takes place at Chatham House on 25 November 2026.',
 };
 
 export const about = {
-  eyebrow: 'The Initiative',
+  eyebrow: 'Our mission',
   statement:
-    'A non-partisan forum where leaders explore realistic AI crises and identify practical steps to strengthen preparedness.',
-  body: 'Inspired by Event 201 (the pandemic-preparedness exercise convened by Johns Hopkins University shortly before COVID-19), the initiative brings senior decision-makers from government, industry, and civil society through a realistic AI crisis in real time.',
+    'When a serious AI crisis occurs, the people making consequential decisions should have had the opportunity to rehearse them together.',
+  body: 'We want AI crisis simulations to become a regular part of how governments and institutions prepare for advanced AI. Our exercises help leaders identify what they can do now to prevent a crisis or reduce its consequences.',
+  publicUnderstanding: 'By filming selected exercises and sharing what we learn, we also aim to improve public understanding.',
 };
 
 export const whyNow = {
@@ -25,6 +26,13 @@ export const whyNow = {
   statement:
     'The implications of increasingly capable AI are arriving faster than institutions are preparing for them.',
   body: 'A realistic crisis exercise helps leaders explore gaps in information, responsibility and coordination, and identify preparations they can advance today.',
+};
+
+export const firstExercise = {
+  eyebrow: 'The first exercise',
+  statement: 'Chatham House, 25 November 2026',
+  body: 'Influential leaders from government and industry will work through an unfolding AI crisis, making decisions as new information emerges. The exercise will explore where responsibilities are unclear and what effective coordination would require.',
+  publication: 'The filmed exercise and its findings will be published afterwards.',
 };
 
 export const format = [
@@ -141,9 +149,9 @@ export const team = [
 ];
 
 export const status = {
-  eyebrow: 'Current Status',
-  text: 'We are developing and piloting the format through smaller exercises before convening a flagship public event alongside a major international gathering.',
-  ask: 'We are seeking advisors, institutional partners, funders, and collaborators.',
+  eyebrow: 'Help build the initiative',
+  text: 'We are building a continuing programme of high-level AI crisis simulations.',
+  ask: 'Get in touch if you would like to support the work or explore hosting a future exercise.',
 };
 
 // Confirmed speakers, most senior first (bios still to be checked).

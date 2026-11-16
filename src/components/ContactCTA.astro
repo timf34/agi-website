@@ -10,6 +10,7 @@ const { inverse = false, align = 'left' } = Astro.props;
 ---
 
 <div class:list={['cta-block', `align-${align}`, { inverse }]}>
+  <p class="eyebrow reveal">{status.eyebrow}</p>
   <p class="statement reveal">{status.text}</p>
   <p class="ask reveal" style="--reveal-delay: 0.1s">{status.ask}</p>
   <p class="reveal" style="--reveal-delay: 0.2s">

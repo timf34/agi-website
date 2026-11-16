@@ -7,7 +7,7 @@ import AdvisoryCouncil from '../components/AdvisoryCouncil.astro';
 import NameList from '../components/NameList.astro';
 import Partners from '../components/Partners.astro';
 import Speakers from '../components/Speakers.astro';
-import { site, hero, about, whyNow, format, advisors, team } from '../content';
+import { site, hero, about, whyNow, firstExercise, format, advisors, team } from '../content';
 ---
 
 <Base title={`${site.name}: Preparing leaders for an age of advanced AI`}>
@@ -44,6 +44,7 @@ import { site, hero, about, whyNow, format, advisors, team } from '../content';
       <div>
         <h2 class="statement reveal" style="--reveal-delay:.1s">{about.statement}</h2>
         <p class="body-copy reveal" style="--reveal-delay:.2s">{about.body}</p>
+        <p class="body-copy reveal" style="--reveal-delay:.3s">{about.publicUnderstanding}</p>
       </div>
     </div>
   </section>
@@ -58,9 +59,20 @@ import { site, hero, about, whyNow, format, advisors, team } from '../content';
     </div>
   </section>
 
+  <section class="section hairline-top" id="first-exercise">
+    <div class="container two-col">
+      <p class="eyebrow eyebrow--muted reveal">{firstExercise.eyebrow}</p>
+      <div>
+        <h2 class="statement reveal" style="--reveal-delay:.1s">{firstExercise.statement}</h2>
+        <p class="body-copy reveal" style="--reveal-delay:.2s">{firstExercise.body}</p>
+        <p class="body-copy reveal" style="--reveal-delay:.3s">{firstExercise.publication}</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section hairline-top" id="format">
     <div class="container two-col">
-      <p class="eyebrow eyebrow--muted reveal">The Exercise</p>
+      <p class="eyebrow eyebrow--muted reveal">How the exercise works</p>
       <div class="steps">
         {
           format.map((step, i) => (
@@ -77,7 +89,7 @@ import { site, hero, about, whyNow, format, advisors, team } from '../content';
 
   <section class="section hairline-top" id="speakers">
     <div class="container two-col">
-      <p class="eyebrow eyebrow--muted reveal">Speakers</p>
+      <p class="eyebrow eyebrow--muted reveal">Participants</p>
       <Speakers />
     </div>
   </section>
