@@ -10,7 +10,7 @@ export const hero = {
   alt: 'A public exercise in AI preparedness.',
   question:
     'How will institutions respond when AI capabilities move faster than expected?',
-  sub: 'AI Global Initiative brings influential leaders together to rehearse realistic AI crises. Our first exercise takes place at Chatham House on 25 November 2026.',
+  sub: 'AI Global Initiative brings influential leaders together to rehearse realistic AI crises. Our first exercise takes place in late November.',
 };
 
 export const about = {
@@ -30,7 +30,7 @@ export const whyNow = {
 
 export const firstExercise = {
   eyebrow: 'The first exercise',
-  statement: 'Chatham House, 25 November 2026',
+  statement: 'Late November',
   body: 'Influential leaders from government and industry will work through an unfolding AI crisis, making decisions as new information emerges. The exercise will explore where responsibilities are unclear and what effective coordination would require.',
   publication: 'The filmed exercise and its findings will be published afterwards.',
 };
