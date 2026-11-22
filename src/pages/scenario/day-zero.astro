@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Day Zero | AI Global Initiative" description="Watch the Day Zero scenario briefing.">
+  <main id="main">
+    <a href="/">AI Global Initiative</a>
+    <h1 class="display">Day Zero</h1>
+    <iframe
+      title="Day Zero scenario video"
+      src="https://player.mediadelivery.net/embed/816973/f82fed04-fd7d-4398-9f7a-fa1bc06271a5?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+      allowfullscreen
+    ></iframe>
+  </main>
+</Base>
+
+<style>
+  main {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: clamp(2rem, 6vw, 5rem) var(--gutter);
+  }
+
+  h1 {
+    margin: 2rem 0 1rem;
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    background: var(--navy);
+  }
+</style>
