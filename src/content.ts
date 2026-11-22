@@ -228,6 +228,15 @@ export const speakers: {
     "url": "https://en.wikipedia.org/wiki/Áslaug_Arna_Sigurbjörnsdóttir"
   },
   {
+    "id": "theo-blackwell",
+    "name": "Theo Blackwell MBE",
+    "title": "Chief Digital Officer for London",
+    "domain": "Digital Government & Public Services",
+    "bio": "Theo Blackwell MBE was appointed London’s first Chief Digital Officer in 2017. He leads digital transformation, data and smart city initiatives at City Hall, working with London’s boroughs and public services to improve service delivery and public engagement. He brings together public, private and community organisations to develop new technology for public services. His work on digital connectivity, collaboration and shared city data helps London prepare for advances in AI and other emerging technologies.",
+    "photo": "/SpeakerPhotos/theo-blackwell.jpg",
+    "url": "https://www.london.gov.uk/who-we-are/what-mayor-does/mayor-and-his-team/theo-blackwell-mbe"
+  },
+  {
     "id": "xenia-wickett",
     "name": "Xenia Wickett",
     "title": "Former Senior White House Official",
