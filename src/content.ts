@@ -131,7 +131,7 @@ export const team = [
   },
   {
     name: 'Nikola Moore',
-    title: 'scenario development & production?',
+    title: 'simulation production',
     photo: '/TeamPhotos/NikolaMoore.jpeg',
   },
   {
