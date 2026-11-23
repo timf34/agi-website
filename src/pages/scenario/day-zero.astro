@@ -12,6 +12,15 @@ import Base from '../../layouts/Base.astro';
       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
       allowfullscreen
     ></iframe>
+    <section class="situation-summary" aria-labelledby="situation-heading">
+      <h2 id="situation-heading">The situation at a glance</h2>
+      <ul>
+        <li>Hospitals across northern England have halted all but emergency blood transfusions. Around 4,000 blood samples may be affected, and patients are being recalled for tests.</li>
+        <li>More than 250,000 routine payments have been frozen. The affected hospital and payment systems run at British Compute.</li>
+        <li>British Compute had expected services to recover overnight. The cause and full extent of the disruption remain unknown.</li>
+        <li>Frontier Labs, a major British Compute customer, has announced promising results for AI-designed cancer vaccines and says its next model will transform personalised medicine.</li>
+      </ul>
+    </section>
   </main>
 </Base>
 
@@ -32,5 +41,23 @@ import Base from '../../layouts/Base.astro';
     aspect-ratio: 16 / 9;
     border: 0;
     background: var(--navy);
+  }
+  .situation-summary {
+    margin-top: 2rem;
+    max-width: 70ch;
+  }
+
+  .situation-summary h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .situation-summary ul {
+    padding-left: 1.4rem;
+    list-style: disc;
+  }
+
+  .situation-summary li + li {
+    margin-top: 0.75rem;
   }
 </style>
