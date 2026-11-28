@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import EmailSignup from '../components/EmailSignup.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ContactCTA from '../components/ContactCTA.astro';
@@ -107,6 +108,8 @@ import { site, hero, about, whyNow, firstExercise, format, advisors, team } from
       <AdvisoryCouncil people={team} />
     </div>
   </section>
+
+  <EmailSignup />
 
   <!-- CTA on navy, echoing the hero -->
   <section class="section cta-panel" id="contact">

@@ -1,0 +1,71 @@
+---
+import { consentText } from '../../lib/signup.js';
+---
+<section class="section hairline-top" id="updates" aria-labelledby="updates-heading">
+  <div class="container signup-grid">
+    <p class="eyebrow eyebrow--muted">Stay informed</p>
+    <div class="signup-content">
+      <h2 class="statement" id="updates-heading">Be part of what comes next.</h2>
+      <p class="intro">Get updates on our films, findings and future AI crisis simulations.</p>
+      <form id="email-signup" aria-describedby="signup-privacy">
+        <label for="signup-email">Email address</label>
+        <div class="input-row">
+          <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required />
+          <button class="btn btn--solid" type="submit">Sign up</button>
+        </div>
+        <div class="trap" aria-hidden="true"><label for="signup-website">Leave this field blank</label><input id="signup-website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
+        <label class="consent"><input type="checkbox" name="consent" required /><span>{consentText}</span></label>
+        <p class="privacy" id="signup-privacy">Your email is stored privately for AIGI updates. To leave the list or request deletion, email <a href="mailto:team@aiglobalinitiative.org?subject=Unsubscribe">team@aiglobalinitiative.org</a>.</p>
+        <p class="message" id="signup-message" role="status" aria-live="polite" tabindex="-1"></p>
+        <noscript><p>Please enable JavaScript to use this form, or email <a href="mailto:team@aiglobalinitiative.org?subject=Subscribe%20to%20AIGI%20updates">team@aiglobalinitiative.org</a> to join the list.</p></noscript>
+      </form>
+    </div>
+  </div>
+</section>
+<script>
+  const form = document.querySelector<HTMLFormElement>('#email-signup');
+  const message = document.querySelector<HTMLElement>('#signup-message');
+  const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  form?.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!message || !button || button.disabled || !form.reportValidity()) return;
+    const fields = new FormData(form);
+    button.disabled = true;
+    button.textContent = 'Signing up…';
+    message.textContent = '';
+    message.removeAttribute('data-error');
+    try {
+      const response = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: fields.get('email'), consent: fields.get('consent') === 'on', website: fields.get('website') }), signal: AbortSignal.timeout(20000) });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message || 'Please try again shortly.');
+      message.textContent = result.message;
+      form.reset();
+    } catch (error) {
+      message.dataset.error = 'true';
+      message.textContent = error instanceof Error && error.name === 'Error' ? error.message : 'We couldn’t confirm your sign-up. Please try again, or email team@aiglobalinitiative.org.';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Sign up';
+      message.focus();
+    }
+  });
+</script>
+<style>
+  .signup-grid { display: grid; grid-template-columns: minmax(140px, 220px) 1fr; gap: clamp(24px, 5vw, 80px); }
+  .signup-content { max-width: 44rem; }
+  .intro { color: var(--slate); margin: 1rem 0 2rem; }
+  form > label { display: block; font-size: 1rem; }
+  .input-row { display: flex; gap: .75rem; margin: .5rem 0 1.25rem; }
+  input[type="email"] { min-width: 0; flex: 1; border: 1px solid var(--hairline-strong); border-radius: 0; background: var(--white); color: var(--ink); padding: .9rem 1rem; font: inherit; }
+  input:focus-visible, button:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
+  .input-row button { flex-shrink: 0; }
+  button:disabled { opacity: .65; cursor: wait; }
+  form > .consent { display: flex; align-items: flex-start; gap: .75rem; font-size: .875rem; }
+  .consent input { margin-top: .3rem; flex-shrink: 0; width: 1.1rem; height: 1.1rem; accent-color: var(--cobalt); }
+  .privacy { margin-top: 1rem; color: var(--slate); font-size: .875rem; overflow-wrap: anywhere; }
+  .message { margin-top: 1rem; min-height: 1.65em; font-size: 1rem; }
+  .message[data-error] { color: #a11b26; }
+  .trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  @media (max-width: 760px) { .signup-grid { grid-template-columns: 1fr; gap: 20px; } }
+  @media (max-width: 480px) { .input-row { flex-direction: column; } .input-row button { justify-content: center; } }
+</style>
